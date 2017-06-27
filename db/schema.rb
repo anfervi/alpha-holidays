@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627075035) do
+ActiveRecord::Schema.define(version: 20170627080430) do
 
   create_table "holidays", force: :cascade do |t|
     t.string "year"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20170627075035) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "work_schedules", force: :cascade do |t|
+    t.string "name"
+    t.string "company"
+    t.string "year"
+    t.integer "holiday_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["holiday_id"], name: "index_work_schedules_on_holiday_id"
   end
 
 end

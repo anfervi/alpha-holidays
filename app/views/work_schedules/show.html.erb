@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @work_schedule.name %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @work_schedule.company %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @work_schedule.year %>
+</p>
+
+<p>
+  <strong>Holiday:</strong>
+  <%= @work_schedule.holiday %>
+</p>
+
+<%= link_to 'Edit', edit_work_schedule_path(@work_schedule) %> |
+<%= link_to 'Back', work_schedules_path %>
