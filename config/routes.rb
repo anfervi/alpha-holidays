@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :public_holidays
   resources :work_schedules
   resources :holidays
   resources :users
