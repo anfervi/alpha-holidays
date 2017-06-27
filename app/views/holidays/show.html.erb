@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @holiday.year %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @holiday.status %>
+</p>
+
+<p>
+  <strong>Validator:</strong>
+  <%= @holiday.validator_id %>
+</p>
+
+<p>
+  <strong>Validated at:</strong>
+  <%= @holiday.validated_at %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @holiday.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @holiday.description %>
+</p>
+
+<p>
+  <strong>Start day:</strong>
+  <%= @holiday.start_day %>
+</p>
+
+<p>
+  <strong>End day:</strong>
+  <%= @holiday.end_day %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @holiday.user %>
+</p>
+
+<%= link_to 'Edit', edit_holiday_path(@holiday) %> |
+<%= link_to 'Back', holidays_path %>
