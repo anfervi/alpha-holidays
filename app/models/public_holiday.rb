@@ -1,3 +1,3 @@
 class PublicHoliday < ApplicationRecord
-  belongs_to :work_calendar
+  belongs_to :work_schedule
 end

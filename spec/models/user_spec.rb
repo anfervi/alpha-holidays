@@ -1,6 +1,4 @@
-#require 'rails_helper'
 require "spec_helper"
-#require "user"
 
 describe User do
 	before :each do
@@ -11,6 +9,10 @@ describe User do
 		@user.email = 'angelfervi@gmail.com'
 		@user.password = 'Alfatec2017'
 		@user.role = 0
+	end
+
+	it "should have_many holidays" do
+		expect(User.reflect_on_association(:holidays).macro).to eq :has_many
 	end
 
 	it "should be valid with name, lastname, department, email, role and password" do

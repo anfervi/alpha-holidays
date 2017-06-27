@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PublicHoliday, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it "should belongs_to work_schedule" do
+		expect(PublicHoliday.reflect_on_association(:work_schedule).macro).to eq :belongs_to
+	end
 end
