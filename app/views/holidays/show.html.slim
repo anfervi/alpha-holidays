@@ -1,0 +1,41 @@
+p#notice
+  = notice
+p
+  strong
+    | Year:
+  = @holiday.year
+p
+  strong
+    | Status:
+  = @holiday.status
+p
+  strong
+    | Validator:
+  = @holiday.validator_id
+p
+  strong
+    | Validated at:
+  = @holiday.validated_at
+p
+  strong
+    | Title:
+  = @holiday.title
+p
+  strong
+    | Description:
+  = @holiday.description
+p
+  strong
+    | Start day:
+  = @holiday.start_day
+p
+  strong
+    | End day:
+  = @holiday.end_day
+p
+  strong
+    | User:
+  = @holiday.user
+= link_to 'Edit', edit_holiday_path(@holiday)
+|  | 
+= link_to 'Back', holidays_path
