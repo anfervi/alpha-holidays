@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627080430) do
+ActiveRecord::Schema.define(version: 20170627081013) do
 
   create_table "holidays", force: :cascade do |t|
     t.string "year"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170627080430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_holidays_on_user_id"
+  end
+
+  create_table "public_holidays", force: :cascade do |t|
+    t.string "name"
+    t.date "day"
+    t.integer "work_calendar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_calendar_id"], name: "index_public_holidays_on_work_calendar_id"
   end
 
   create_table "users", force: :cascade do |t|
