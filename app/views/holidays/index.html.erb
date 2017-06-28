@@ -1,43 +1,109 @@
-<p id="notice"><%= notice %></p>
+<h2><%= link_to 'Holidays', holidays_path %></h2>
+<div class="block-section form-inline">
+  <div class="panel panel-default panel-condensed">
+    <div class="panel-heading separator">
+      <i class="fa fa-search"></i>
+      <div class="panel-title">Búsqueda</div>
+    </div>
+    <div class="panel-body">
+      <%=form_tag url_for(:controller => 'holidays', :action => 'search_holiday'), :method => :post do %>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-2">
+              <%if @pendiente.blank? and @procesada.blank? and @eliminada.blank?%>
+                <%= radio_button_tag :deleted, :false, true %> Activas
+              <%else%>
+                <%if @eliminada.blank?%>
+                  <%= radio_button_tag :deleted, :false, true %> Activas
+                <%else%>
+                  <%= radio_button_tag :deleted, :false %> Activas
+                <%end%>
+              <%end%>
+            </div>
+            <div class="col-md-2">
+              <%if @eliminada.present?%>
+                <%= radio_button_tag :deleted, :true, true %> Eliminadas
+              <%else%>
+                <%= radio_button_tag :deleted, :true %> Eliminadas
+              <%end%>
+            </div>
+            <div id="esatu" class="col-md-4 col-md-offset-2">
+              <%if @pendiente.blank? and @procesada.blank? and @eliminada.blank?%>
+                <input type="checkbox" data-checkbox="icheckbox_square-blue" name="pendiente" id="pendiente" checked>
+              <%else%>
+                            <%if @pendiente.present?%>
+                      <input type="checkbox" data-checkbox="icheckbox_square-blue" name="pendiente" id="pendiente" checked>
+                    <%else%>
+                      <input type="checkbox" data-checkbox="icheckbox_square-blue" name="pendiente" id="pendiente">
+                            <%end%>
+                          <%end%>
+                          Pendientes
+                          <%if @procesada.present?%>
+                    <input type="checkbox" data-checkbox="icheckbox_square-blue" name="procesada" id="procesada" checked>
+                  <%else%>
+                    <input type="checkbox" data-checkbox="icheckbox_square-blue" name="procesada" id="procesada">
+                          <%end%>
+                            Procesadas
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-6">
+                Clínica <strong>Origen</strong>:
+                <%= select(nil,:clinic_from_id,clinics_source_options, {include_blank:"#{t'Todas las clínicas'}"},onchange:'',:"data-search"=>"true",style:"width:100%")%>
+            </div>
+            <div class="col-sm-6">
+              Clínica <strong>Destino</strong>:
+                <%= select(nil,:clinic_to_id,clinics_destination_options, {include_blank:"#{t'Todas las clínicas'}"},onchange:'',:"data-search"=>"true",style:"width:100%")%>
+            </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-6">
+              <label>Paciente: </label>
+                <%if @patient.present? %>
+                  <%if nil%>
+                    <input type="text" onchange="" data-init-plugin="select2" style="width:100%" name="my_select[my_patient_id]" id="my_select_my_patient_id" tabindex="-1" title="<%=patient.full_name%>" class="select2-offscreen", value="<%= patient.id%>">
+                <%end%>
+                <%=@patient.full_name %>
+              <%end%>
+              <br>
+              <input type="text" onchange="" data-init-plugin="select2" style="width:100%" name="my_select[my_patient_id]" id="my_select_my_patient_id" tabindex="-1" title="" class="select2-offscreen">
 
-<h1>Holidays</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th>Status</th>
-      <th>Validator</th>
-      <th>Validated at</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start day</th>
-      <th>End day</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @holidays.each do |holiday| %>
-      <tr>
-        <td><%= holiday.year %></td>
-        <td><%= holiday.status %></td>
-        <td><%= holiday.validator_id %></td>
-        <td><%= holiday.validated_at %></td>
-        <td><%= holiday.title %></td>
-        <td><%= holiday.description %></td>
-        <td><%= holiday.start_day %></td>
-        <td><%= holiday.end_day %></td>
-        <td><%= holiday.user %></td>
-        <td><%= link_to 'Show', holiday %></td>
-        <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
-        <td><%= link_to 'Destroy', holiday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Holiday', new_holiday_path %>
+            </div>
+              <div class="col-md-6">
+                          <div class="input-group">
+                              <div class="icheck-inline">
+                                <%
+                                fechas=["Hoy","Última Semana","Último Mes","Último año","Últimos 2 años"]
+                                fechas_options=options_for_select(fechas)
+                                if @fecha.present?
+                                  fechas_options=options_for_select(fechas,@fecha)
+                                end
+                                %>
+                                <%= select(nil,:fecha,fechas_options, {include_blank:"Cualquier fecha"},onchange:'',:"data-search"=>"true",style:"width:110%")%>
+                              </div>
+                </div>
+              </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-dark btn-block">
+              <i class="fa fa-search "></i> Buscar
+            </button>
+            <%if nil%>
+            <%= link_to "#modal-new-interconsultation", class:"btn btn-success btn-block", :"data-toggle"=>"modal", :"data-target"=>"#modal-new-interconsultation" do %>
+              Nueva Petición <i class="fa fa-plus"></i>
+            <%end%>
+          <%end%>
+          <%if current_user.present? and (current_user.is_teacher? or current_user.is_aux? or current_user.is_student? or current_user.admin?) %>
+            <%= link_to "javascript:showMyModal();", class:"btn btn-success btn-block" do %>
+              Nueva Petición <i class="fa fa-plus"></i>
+            <%end%>
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
