@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 	  resources :work_schedules
 	  resources :holidays
 	  resources :users  
+
+	root to: 'holidays#index'
 end
