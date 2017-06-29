@@ -11,4 +11,8 @@ class User < ApplicationRecord
 
 	enum user_roles: { admin: 0, manager: 1, employee: 2}
 
+
+	def full_name
+    return "#{self.lastname}, #{self.name}"
+  end
 end
