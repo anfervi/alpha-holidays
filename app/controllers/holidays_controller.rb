@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-  before_action :set_holiday, only: [:show, :edit, :update, :destroy]
+  before_action :set_holiday, only: [:show, :edit, :update, :destroy, :new, :create]
 
   def index
     @q = Holiday.ransack(params[:q])
@@ -7,6 +7,7 @@ class HolidaysController < ApplicationController
   end
 
   def show
+    @holiday = Holiday.find(params[:id])
   end
 
   def new
@@ -14,10 +15,12 @@ class HolidaysController < ApplicationController
   end
 
   def edit
+    @holiday = Holiday.find(params[:id])
   end
 
   def create
     @holiday = Holiday.new(holiday_params)
+    @holiday.save
 
     respond_to do |format|
       if @holiday.save
@@ -53,7 +56,7 @@ class HolidaysController < ApplicationController
   private
 
     def set_holiday
-      @holiday = Holiday.find(params[:id])
+      @holiday = Holiday.find(params[:holiday_id]).first if params[:holiday_id]
     end
 
     def holiday_params
