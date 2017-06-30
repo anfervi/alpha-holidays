@@ -1,43 +1,91 @@
-<p id="notice"><%= notice %></p>
+<div class="block-section form-inline">
+  <div class="panel panel-default panel-condensed">
+    <div class="panel-heading separator">
+      <i class="fa fa-search"></i>
+      <div class="panel-title">
+        Búsqueda 
+      </div>
+    </div>
+    <div class="panel-body">
+      <%= search_form_for @q do |f| %>
 
-<h1>Holidays</h1>
+        <%= f.label :department_cont, "Unidad de Negocio contiene" %>
+        <%= f.search_field :department_cont %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th>Status</th>
-      <th>Validator</th>
-      <th>Validated at</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start day</th>
-      <th>End day</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <%= f.label :user_name_start, "Nombre empieza" %>
+        <%= f.search_field :user_name_start %>
 
-  <tbody>
-    <% @holidays.each do |holiday| %>
-      <tr>
-        <td><%= holiday.year %></td>
-        <td><%= holiday.status %></td>
-        <td><%= holiday.validator_id %></td>
-        <td><%= holiday.validated_at %></td>
-        <td><%= holiday.title %></td>
-        <td><%= holiday.description %></td>
-        <td><%= holiday.start_day %></td>
-        <td><%= holiday.end_day %></td>
-        <td><%= holiday.user %></td>
-        <td><%= link_to 'Show', holiday %></td>
-        <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
-        <td><%= link_to 'Destroy', holiday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <%= f.label :year_cont, "Año contiene" %>
+        <%= f.search_field :year_cont %>
 
-<br>
+        <%= f.submit %>
+      <% end %>
+    </div> 
+  </div>
+  <div class="panel panel-default panel-condensed">
+    <div class="panel-heading separator">
+      <i class="fa fa-list"></i>
+      <div class="panel-title">Lista de Vacaciones</div>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive" id="section_all__done">
+        <table class="table table-hover" id="condensedTable">
+          <thead>
+            <tr>
+              <th class="text-center"><%= sort_link @q, :id, default_order: :desc %></th>
+              <th class="text-center"><%= sort_link @q, :year %></th>
+              <th class="text-center"><%= sort_link @q, :status %></th>
+              <th class="text-center"><%= sort_link @q, :validator_id %></th>
+              <th class="text-center"><%= sort_link @q, :validated_at %></th>
+              <th class="text-center"><%= sort_link @q, :title %></th>
+              <th class="text-center"><%= sort_link @q, :description %></th>
+              <th class="text-center"><%= sort_link @q, :start_day %></th>
+              <th class="text-center"><%= sort_link @q, :end_day %></th>D
+              <th class="text-center"><%= sort_link @q, :end_day %></th>
+              <th class="text-center" style="width:25%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%myStyle="padding-top:2px;padding-bottom:2px"%>
+            <% @holidays.each do |holiday|%>
+              <tr>
+                <td class="text-center  ">
+                  <%= holiday.id %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.year %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.status %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.validator_id %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.validated_at %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.title %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.description %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.start_day %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.end_day %>
+                </td>
+                <td class="text-center  ">
+                  <%= holiday.end_day %>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Holiday', new_holiday_path %>
+

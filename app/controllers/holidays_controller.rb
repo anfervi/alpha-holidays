@@ -1,28 +1,21 @@
 class HolidaysController < ApplicationController
   before_action :set_holiday, only: [:show, :edit, :update, :destroy]
 
-  # GET /holidays
-  # GET /holidays.json
   def index
-    @holidays = Holiday.all
+    @q = Holiday.ransack(params[:q])
+    @holidays = @q.result(distinct:true)
   end
 
-  # GET /holidays/1
-  # GET /holidays/1.json
   def show
   end
 
-  # GET /holidays/new
   def new
     @holiday = Holiday.new
   end
 
-  # GET /holidays/1/edit
   def edit
   end
 
-  # POST /holidays
-  # POST /holidays.json
   def create
     @holiday = Holiday.new(holiday_params)
 
@@ -37,8 +30,6 @@ class HolidaysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /holidays/1
-  # PATCH/PUT /holidays/1.json
   def update
     respond_to do |format|
       if @holiday.update(holiday_params)
@@ -51,8 +42,6 @@ class HolidaysController < ApplicationController
     end
   end
 
-  # DELETE /holidays/1
-  # DELETE /holidays/1.json
   def destroy
     @holiday.destroy
     respond_to do |format|
@@ -62,12 +51,11 @@ class HolidaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_holiday
       @holiday = Holiday.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def holiday_params
       params.require(:holiday).permit(:year, :status, :validator_id, :validated_at, :title, :description, :start_day, :end_day, :user_id)
     end
