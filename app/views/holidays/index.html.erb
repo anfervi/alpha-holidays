@@ -7,49 +7,11 @@
       </div>
     </div>
     <div class="panel-body">
-      <%=form_tag url_for(:controller => 'holidays', :action => 'search_holiday'), :method => :post do %>
-        <div class="col-md-12">
-          <div class="col-sm-4">
-              <%
-              departments = ["Unidad de Imagen Médica", "eSalud", "Navision"]
-              departments_options = options_for_select(departments)
-              if @department
-                departments_options = options_for_select(departments, @department)
-              end
-              %>
-              <strong>Unidad de Negocio</strong>:
-              <%= select(nil,:department,departments_options, {include_blank:"#{t'Todas las unidades de negocio'}"},onchange:'',:"data-search"=>"true",style:"width:100%")%>
-          </div>
-          <div class="col-sm-2">
-            <strong>Año</strong>:
-              <%= select(nil,:year,departments_options, {include_blank:"#{t'Todas las clínicas'}"},onchange:'',:"data-search"=>"true",style:"width:100%")%>
-          </div>
-          <div class="col-sm-4">
-            <label>Empleado: </label>
-              <%#=@user.full_name %>
-            <%end%>
-            <input type="text" onchange="" data-init-plugin="select2" style="width:100%" name="my_select[my_patient_id]" id="my_select_my_patient_id" tabindex="-1" title="" class="select2-offscreen">
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-dark btn-block">
-              <i class="fa fa-search "></i> Buscar
-            </button>
-            <%if current_user.present? and (current_user.is_teacher? or current_user.is_aux? or current_user.is_student? or current_user.admin?) %>
-              <%= link_to "javascript:showMyModal();", class:"btn btn-success btn-block" do %>
-                Nueva Petición <i class="fa fa-plus"></i>
-              <%end%>
-          </div>
-        </div>
-      <%end%>
-    </div>
-    <div class="panel-body">
       <%= search_form_for @q do |f| %>
 
-        # Search if the name field contains...
         <%= f.label :department_cont %>
         <%= f.search_field :department_cont %>
 
-        # Search if an associated articles.title starts with...
         <%= f.label :user_name_start %>
         <%= f.search_field :user_name_start %>
 
