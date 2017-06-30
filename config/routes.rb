@@ -5,13 +5,7 @@ Rails.application.routes.draw do
 	  resources :holidays
 	  resources :users  
 
-  resources :holidays do
-	  collection do
-	    post 'search_holiday'
-	  end
-  end
-
+  resources :holidays 
   resources :admin
-
 	root to: 'holidays#index'
 end
