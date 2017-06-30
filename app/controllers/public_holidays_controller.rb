@@ -1,28 +1,20 @@
 class PublicHolidaysController < ApplicationController
   before_action :set_public_holiday, only: [:show, :edit, :update, :destroy]
 
-  # GET /public_holidays
-  # GET /public_holidays.json
   def index
     @public_holidays = PublicHoliday.all
   end
 
-  # GET /public_holidays/1
-  # GET /public_holidays/1.json
   def show
   end
 
-  # GET /public_holidays/new
   def new
     @public_holiday = PublicHoliday.new
   end
 
-  # GET /public_holidays/1/edit
   def edit
   end
 
-  # POST /public_holidays
-  # POST /public_holidays.json
   def create
     @public_holiday = PublicHoliday.new(public_holiday_params)
 
@@ -37,8 +29,6 @@ class PublicHolidaysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /public_holidays/1
-  # PATCH/PUT /public_holidays/1.json
   def update
     respond_to do |format|
       if @public_holiday.update(public_holiday_params)
@@ -51,8 +41,6 @@ class PublicHolidaysController < ApplicationController
     end
   end
 
-  # DELETE /public_holidays/1
-  # DELETE /public_holidays/1.json
   def destroy
     @public_holiday.destroy
     respond_to do |format|
@@ -62,12 +50,11 @@ class PublicHolidaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_public_holiday
       @public_holiday = PublicHoliday.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def public_holiday_params
       params.require(:public_holiday).permit(:name, :day, :work_calendar_id)
     end

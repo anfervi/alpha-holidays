@@ -1,28 +1,20 @@
 class WorkSchedulesController < ApplicationController
   before_action :set_work_schedule, only: [:show, :edit, :update, :destroy]
 
-  # GET /work_schedules
-  # GET /work_schedules.json
   def index
     @work_schedules = WorkSchedule.all
   end
 
-  # GET /work_schedules/1
-  # GET /work_schedules/1.json
   def show
   end
 
-  # GET /work_schedules/new
   def new
     @work_schedule = WorkSchedule.new
   end
 
-  # GET /work_schedules/1/edit
   def edit
   end
 
-  # POST /work_schedules
-  # POST /work_schedules.json
   def create
     @work_schedule = WorkSchedule.new(work_schedule_params)
 
@@ -37,8 +29,6 @@ class WorkSchedulesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /work_schedules/1
-  # PATCH/PUT /work_schedules/1.json
   def update
     respond_to do |format|
       if @work_schedule.update(work_schedule_params)
@@ -51,8 +41,6 @@ class WorkSchedulesController < ApplicationController
     end
   end
 
-  # DELETE /work_schedules/1
-  # DELETE /work_schedules/1.json
   def destroy
     @work_schedule.destroy
     respond_to do |format|
@@ -62,12 +50,11 @@ class WorkSchedulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_work_schedule
       @work_schedule = WorkSchedule.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def work_schedule_params
       params.require(:work_schedule).permit(:name, :company, :year, :holiday_id)
     end
