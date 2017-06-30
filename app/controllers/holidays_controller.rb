@@ -4,7 +4,8 @@ class HolidaysController < ApplicationController
   # GET /holidays
   # GET /holidays.json
   def index
-    @holidays = Holiday.all
+    @q = Holiday.ransack(params[:q])
+    @holidays = @q.result(distinct:true)
   end
 
   # GET /holidays/1
