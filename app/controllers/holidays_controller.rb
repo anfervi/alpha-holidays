@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-  before_action :set_holiday, only: [:show, :edit, :update, :destroy, :new, :create]
+  before_action :set_holiday, only: [:show, :edit, :update, :destroy]
 
   def index
     @q = Holiday.ransack(params[:q])
@@ -51,6 +51,42 @@ class HolidaysController < ApplicationController
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def validate
+    @holiday = Holiday.find(params[:id])
+    if @holiday.status
+      if @holiday.status = 1
+        @holiday.status = 0
+        @holiday.save
+      end
+    else
+      @requested_holidays.status = 0
+      @requested_holidays.save
+    end
+    respond_to do |format|
+      format.html { redirect_to holidays_url, notice: 'Holiday was successfully validated.' }
+      format.json { head :no_content }
+    end
+
+  end
+
+  def reject
+    @holiday = Holiday.find(params[:id])
+    if @holiday.status
+      if @holiday.status = 0
+        @holiday.status = 1
+        @holiday.save
+      end
+    else
+      @requested_holidays.status = 1
+      @requested_holidays.save
+    end
+    respond_to do |format|
+      format.html { redirect_to holidays_url, notice: 'Holiday was successfully rejected.' }
+      format.json { head :no_content }
+    end
+
   end
 
   private
