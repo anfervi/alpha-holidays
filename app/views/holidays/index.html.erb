@@ -79,6 +79,14 @@
                 <td class="text-center  ">
                   <%= holiday.end_day %>
                 </td>
+                <td class="text-center">
+                  <%= link_to reject_holiday_path(holiday.id), class:"btn btn-sm btn-danger", title: 'Rechazar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do %>
+                    <i class="fa fa-reply-all"></i>
+                  <%end%>     
+                  <%= link_to validate_holiday_path(holiday.id), class:"btn btn-sm btn-success", title: 'Aceptar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do %>
+                    <i class="fa fa-check"></i>
+                  <%end%>
+                </td>
               </tr>
             <%end%>
           </tbody>
