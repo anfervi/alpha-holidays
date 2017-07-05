@@ -18,6 +18,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'pundit/rspec'
+require 'pundit/matchers'
 require 'factory_girl_rails'
 
 RSpec.configure do |config|

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	validates :department, presence: true
 	validates :role, presence: true
 	has_many :holidays
-	enum user_roles: { admin: 0, manager: 1, employee: 2}
+	enum role: { admin: 0, manager: 1, employee: 2}
 
 	def full_name
     return "#{self.lastname}, #{self.name}"

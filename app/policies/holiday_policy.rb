@@ -1,5 +1,12 @@
 class HolidayPolicy < ApplicationPolicy
-  class Scope < Scope
+  attr_reader :user, :holiday
+
+  def initialize(user, holiday)
+    @user = user
+    @holiday = holiday
+  end  
+
+  class Scope
   	attr_reader :user, :scope
 
   	def initialize(user, scope)

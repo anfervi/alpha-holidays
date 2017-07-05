@@ -1,5 +1,6 @@
 class HolidaysController < ApplicationController
   before_action :set_holiday, only: [:show, :edit, :update, :destroy]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
     @q = Holiday.ransack(params[:q])
@@ -54,7 +55,8 @@ class HolidaysController < ApplicationController
   end
 
   def validate
-    @holiday = Holiday.find(params[:id])
+    @holiday = authorize Holiday.find(params[:id])
+    authorize @holiday
     if @holiday.status
       if @holiday.status = 1
         @holiday.status = 0
@@ -72,7 +74,8 @@ class HolidaysController < ApplicationController
   end
 
   def reject
-    @holiday = Holiday.find(params[:id])
+    @holiday = authorize Holiday.find(params[:id])
+    authorize @holiday
     if @holiday.status
       if @holiday.status = 0
         @holiday.status = 1
@@ -93,6 +96,11 @@ class HolidaysController < ApplicationController
 
     def set_holiday
       @holiday = Holiday.find(params[:holiday_id]).first if params[:holiday_id]
+    end
+
+    def user_not_authorized
+      flash[:error] = "You are not authorized to perform this action."
+      redirect_to(request.referrer || root_path)
     end
 
     def holiday_params
