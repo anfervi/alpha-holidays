@@ -2,37 +2,60 @@ require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe HolidayPolicy do
-  subject { HolidayPolicy }
 
+  subject { HolidayPolicy.new(user, holiday)}
 
-  describe User do
-    before :each do
-      @user = User.new
-      @user.name = 'Angel'
-      @user.lastname = 'Fernández'
-      @user.department = 'Imagen Médica'
-      @user.email = 'angelfervi@gmail.com'
-      @user.password = 'Alfatec2017'
-      @user.role = 0
-    end
+  let(:admin) { FactoryGirl.create(:admin) }
+  let(:manager) { FactoryGirl.create(:manager) }
+  let(:employee) { FactoryGirl.create(:employee) }
+  let(:holidays) { FactoryGirl.create(:holiday) }
 
-  permissions :validate? do
-    it "grants validation for holiday request if user is admin or manager" do
-      expect(@holiday).not_to permit(User.new(:role => 0, :role => 1))
-    end
-
-    it "decline validation for holiday request if user is employee" do
-      expect(@holiday).to permit(User.new(:employee => true))
-    end
+  shared_examples_for "someone fully authorized" do
+    it { is_expected.to allow_action(:show) }
+    it { is_expected.to allow_action(:index) }
+    it { is_expected.to allow_action(:new) }
+    it { is_expected.to allow_action(:create) }
+    it { is_expected.to allow_action(:edit) }
+    it { is_expected.to allow_action(:update) }
+    it { is_expected.to allow_action(:destroy) }
   end
 
-  permissions :reject? do
-    it "grants rejection for holiday request if user is admin or manager" do
-      expect(@holiday).not_to permit(User.new(:admin => true, :manager => true))
-    end
-
-    it "decline rejection for holiday request if user is employee" do
-      expect(@holiday).to permit(User.new(:employee => true))
+  context 'for an admin' do
+    context 'over any holidays' do
+      subject { HolidayPolicy.new(admin, holidays) }
+      it_behaves_like "someone fully authorized"
     end
   end
 end
+
+
+
+
+  # context 'for a visitor' do
+  #   let(:user) { nil }
+
+  #   it { should_not permit(:validate)  }
+  #   it { should_not permit(:reject)    }
+  # end
+
+  # context "for an admin" do
+  #   let(:admin) { FactoryGirl.create(:admin, role: 'admin') }
+
+  #   it { should permit(:validate)     }
+  #   it { should permit(:reject)       }
+  # end
+
+  # context "for a manager" do
+  #   let(:manager) { FactoryGirl.create(:manager, role: 'manager') }
+
+  #   it { should permit(:validate)     }
+  #   it { should permit(:reject)       }
+  # end
+
+  # context "for an employee" do
+  #   let(:employee) { FactoryGirl.create(:employee, role: 'employee') }
+
+  #   it { should_not permit(:validate)     }
+  #   it { should_not permit(:reject)       }
+  # end
+
