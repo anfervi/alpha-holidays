@@ -1,49 +1,49 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Year:</strong>
+  <strong><%=t'year'%>:</strong>
   <%= @holiday.year %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%=t'status'%>:</strong>
   <%= @holiday.status %>
 </p>
 
 <p>
-  <strong>Validator:</strong>
+  <strong><%=t'validator'%>:</strong>
   <%= @holiday.validator_id %>
 </p>
 
 <p>
-  <strong>Validated at:</strong>
+  <strong><%=t'validated_at'%>:</strong>
   <%= @holiday.validated_at %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%=t'title'%>:</strong>
   <%= @holiday.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%=t'description'%>:</strong>
   <%= @holiday.description %>
 </p>
 
 <p>
-  <strong>Start day:</strong>
+  <strong><%=t'start_day'%>:</strong>
   <%= @holiday.start_day %>
 </p>
 
 <p>
-  <strong>End day:</strong>
+  <strong><%=t'end_day'%>:</strong>
   <%= @holiday.end_day %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong><%=t'user'%></strong>
   <%= @holiday.user %>
 </p>
 
-<%= link_to 'Edit', edit_holiday_path(@holiday) %> |
-<%= link_to 'Back', holidays_path %>
+<%= link_to t('edit'), edit_holiday_path(@holiday) %> |
+<%= link_to t('back'), holidays_path %>

@@ -40,7 +40,7 @@
           <div class="sidebar-top">
             <form action="/users" method="post" class="searchform" id="search-results">
               <%if @search.present?%>
-                <input type="text" class="form-control" name="search" placeholder="Buscar empleado..." value="<%=@search.mb_chars%>">
+                <input type="text" class="form-control" name="search" placeholder=t('search_employee') value="<%=@search.mb_chars%>">
               <%else%>
                 <input type="text" class="form-control" name="search" placeholder="Buscar empleado...">
               <%end%>
@@ -48,18 +48,18 @@
           </div>
           <ul class="nav nav-sidebar">
             <li class="nav-active">
-              <a href="/users"><i class="fa fa-users"></i><span>Empleados</span></a>
+              <a href="/users"><i class="fa fa-users"></i><span><%=t'employee'%></span></a>
             </li>
             <li class="nav-parent">
-              <a href="/holidays"><i class="fa fa-plane"></i><span>Vacaciones</span><span class="fa arrow"></span></a>
+              <a href="/holidays"><i class="fa fa-plane"></i><span><%=t'holidays'%></span><span class="fa arrow"></span></a>
               <ul class="children collapse ">
-                <li><a href="/settings/users"><i class="fa fa-check"></i>Aprobar</a></li>
-                <li><a href="/holidays/new"><i class="fa fa-question"></i>Solicitar</a></li>
-                <li><a href="/holidays/index"><i class="fa fa-search"></i>Consultar</a></li>
+                <li><a href="/settings/users"><i class="fa fa-check"></i><%=t'validate'%></a></li>
+                <li><a href="/holidays/new"><i class="fa fa-question"></i><%=t'request'%></a></li>
+                <li><a href="/holidays/index"><i class="fa fa-search"></i><%=t'search'%></a></li>
               </ul>
             </li>
             <li class="nav-parent">
-              <a href="/work_schedule"><i class="fa fa-calendar"></i><span>Calendario Laboral</span></a>
+              <a href="/work_schedule"><i class="fa fa-calendar"></i><span><%=t'work_schedule'%></span></a>
             </li>
           </ul>
           <div class="sidebar-footer clearfix">
@@ -80,14 +80,14 @@
               <li class="dropdown" id="language-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <i class="icon-globe"></i>
-                <span>Lenguage</span>
+                <span><%=t'lenguage'%></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#" data-lang="en"><img src="../assets/global/images/flags/usa.png" alt="flag-english"> <span>English</span></a>
+                    <a href="#" data-lang="en"><img src="../assets/global/images/flags/usa.png" alt="flag-english"> <span><%=t'english'%></span></a>
                   </li>
                   <li>
-                    <a href="#" data-lang="es"><img src="../assets/global/images/flags/spanish.png" alt="flag-english"> <span>Español</span></a>
+                    <a href="#" data-lang="es"><img src="../assets/global/images/flags/spanish.png" alt="flag-english"> <span><%=t'spanish'%></span></a>
                   </li>
                 </ul>
               </li>
@@ -100,13 +100,13 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#"><i class="icon-user"></i><span>Mi Perfil</span></a>
+                    <a href="#"><i class="icon-user"></i><span><%=t'my_profile'%></span></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-calendar"></i><span>Mis Vacaciones</span></a>
+                    <a href="#"><i class="icon-calendar"></i><span><%=t'my_holidays'%></span></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-logout"></i><span>Cerrar sesión</span></a>
+                    <a href="#"><i class="icon-logout"></i><span><%=t'exit'%></span></a>
                   </li>
                 </ul>
               </li>
@@ -126,10 +126,10 @@
               <p class="pull-left sm-pull-reset">
                 <span>Copyright <span class="copyright">©</span> 2017 </span>
                 <span>ALFATEC SISTEMAS S.L.</span>.
-                <span>All rights reserved. </span>
+                <span><%=t'all_rights_reserved'%></span>
               </p>
               <p class="pull-right sm-pull-reset">
-                <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
+                <span><a href="#" class="m-r-10"><%=t'support'%></a> | <a href="#" class="m-l-10 m-r-10"><%=t'terms_of_use'%></a> | <a href="#" class="m-l-10"><%=t'privacy_policy'%></a></span>
               </p>
             </div>
           </div>
@@ -140,35 +140,8 @@
       <!-- BEGIN BUILDER -->
       <!-- END BUILDER -->
     </section>
-    <!-- BEGIN QUICKVIEW SIDEBAR -->
-    <div id="quickview-sidebar">
-      <div class="quickview-header">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#chat" data-toggle="tab">Chat</a></li>
-          <li><a href="#notes" data-toggle="tab">Notes</a></li>
-          <li><a href="#settings" data-toggle="tab" class="settings-tab">Settings</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- END QUICKVIEW SIDEBAR -->
-    <!-- BEGIN SEARCH -->
-    <div id="morphsearch" class="morphsearch">
-      <form class="morphsearch-form">
-        <input class="morphsearch-input" type="search" placeholder="Search..."/>
-        <button class="morphsearch-submit" type="submit">Search</button>
-      </form>
-    </div>
-    <!-- END SEARCH -->
-    <!-- BEGIN PRELOADER -->
-    <div class="loader-overlay">
-      <div class="spinner">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-      </div>
-    </div>
     <!-- END PRELOADER -->
-    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a> 
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
     <script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
     <script src="../assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
     <script src="../assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>

@@ -3,45 +3,44 @@
     <div class="panel-heading separator">
       <i class="fa fa-search"></i>
       <div class="panel-title">
-        Búsqueda 
+        Búsqueda
       </div>
     </div>
     <div class="panel-body">
       <%= search_form_for @q do |f| %>
 
-        <%= f.label :department_cont, "Unidad de Negocio contiene" %>
+        <%= f.label :department_cont, t('department_contains') %>
         <%= f.search_field :department_cont %>
 
-        <%= f.label :user_name_start, "Nombre empieza" %>
+        <%= f.label :user_name_start, t('user_name_start_with')%>
         <%= f.search_field :user_name_start %>
 
-        <%= f.label :year_cont, "Año contiene" %>
+        <%= f.label :year_cont, t('year_contains')%>
         <%= f.search_field :year_cont %>
 
-        <%= f.submit %>
+        <%= f.submit t('search')%>
       <% end %>
-    </div> 
+    </div>
   </div>
   <div class="panel panel-default panel-condensed">
     <div class="panel-heading separator">
       <i class="fa fa-list"></i>
-      <div class="panel-title">Lista de Vacaciones</div>
+      <div class="panel-title"><%=t'holidays_list'%></div>
     </div>
     <div class="panel-body">
       <div class="table-responsive" id="section_all__done">
         <table class="table table-hover" id="condensedTable">
           <thead>
             <tr>
-              <th class="text-center"><%= sort_link @q, :id, default_order: :desc %></th>
-              <th class="text-center"><%= sort_link @q, :year %></th>
-              <th class="text-center"><%= sort_link @q, :status %></th>
-              <th class="text-center"><%= sort_link @q, :validator_id %></th>
-              <th class="text-center"><%= sort_link @q, :validated_at %></th>
-              <th class="text-center"><%= sort_link @q, :title %></th>
-              <th class="text-center"><%= sort_link @q, :description %></th>
-              <th class="text-center"><%= sort_link @q, :start_day %></th>
-              <th class="text-center"><%= sort_link @q, :end_day %></th>D
-              <th class="text-center"><%= sort_link @q, :end_day %></th>
+              <th class="text-center"><%= sort_link @q, :id, t('id')%></th>
+              <th class="text-center"><%= sort_link @q, :year, t('year')%></th>
+              <th class="text-center"><%= sort_link @q, :status, t('status')%></th>
+              <th class="text-center"><%= sort_link @q, :validator_id, t('validator')%></th>
+              <th class="text-center"><%= sort_link @q, :validated_at, t('validated_at')%></th>
+              <th class="text-center"><%= sort_link @q, :title, t('title')%></th>
+              <th class="text-center"><%= sort_link @q, :description, t('description')%></th>
+              <th class="text-center"><%= sort_link @q, :start_day, t('start_day')%></th>
+              <th class="text-center"><%= sort_link @q, :end_day, t('end_day')%></th>
               <th class="text-center" style="width:25%;"></th>
             </tr>
           </thead>
@@ -76,13 +75,10 @@
                 <td class="text-center  ">
                   <%= holiday.end_day %>
                 </td>
-                <td class="text-center  ">
-                  <%= holiday.end_day %>
-                </td>
                 <td class="text-center">
                   <%= link_to reject_holiday_path(holiday.id), class:"btn btn-sm btn-danger", title: 'Rechazar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do %>
                     <i class="fa fa-reply-all"></i>
-                  <%end%>     
+                  <%end%>
                   <%= link_to validate_holiday_path(holiday.id), class:"btn btn-sm btn-success", title: 'Aceptar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do %>
                     <i class="fa fa-check"></i>
                   <%end%>
