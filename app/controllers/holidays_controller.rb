@@ -4,7 +4,6 @@ class HolidaysController < ApplicationController
   def index
     @q = Holiday.ransack(params[:q])
     @holidays = @q.result(distinct:true)
-    authorize @holiday
   end
 
   def show

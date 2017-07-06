@@ -1,4 +1,4 @@
-<%= simple_form_for @holiday, 
+<%= simple_form_for @holiday,
     :url => url_for(:action => 'create', :controller => 'holidays'),
     :method => 'post' do |f| %>
   <%= f.error_notification %>
@@ -6,26 +6,26 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="col-md-2">
-          <%= f.input :year %>
+          <%= f.input :year,label:t('year')%>
         </div>
         <div class="col-md-8">
-          <%= f.input :title %>
+          <%= f.input :title,label:t('title')%>
         </div>
         <div class="col-md-2">
-          <%= f.input :user_id %>
+          <%= f.input :user_id,label:t('user')%>
         </div>
       <div>
       <div class="col-sm-12">
         <div class="col-md-12">
-          <%= f.input :description %>
+          <%= f.input :description,label:t('description')%>
         </div>
       </div>
       <div class="col-sm-12">
         <div class="col-md-6">
-          <%= f.input :start_day %>
+          <%= f.input :start_day,label:t('start_day')%>
         </div>
         <div class="col-md-6">
-          <%= f.input :end_day %>
+          <%= f.input :end_day,label:t('end_day')%>
         </div>
       </div>
     </div>
