@@ -6,12 +6,12 @@ class HolidayPolicy < ApplicationPolicy
     @holiday = holiday
   end  
 
-  class Scope
+  class Scope < Scope
   	attr_reader :user, :scope
 
-  	def initialize(user, scope)
+  	def initialize(user, holiday)
   		@user = user
-  		@scope = scope
+  		@authorizable = holiday
   	end
 
     def resolve
@@ -21,6 +21,34 @@ class HolidayPolicy < ApplicationPolicy
     		scope.where(published: true)
     	end
     end
+  end
+
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def create?
+    true
+  end
+
+  def new?
+    true
+  end
+
+  def update?
+    true
+  end
+
+  def edit?
+    true
+  end
+
+  def destroy?
+    true
   end
 
   def validate?

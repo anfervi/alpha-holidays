@@ -5,22 +5,27 @@ class HolidaysController < ApplicationController
   def index
     @q = Holiday.ransack(params[:q])
     @holidays = @q.result(distinct:true)
+    authorize @holiday
   end
 
   def show
     @holiday = Holiday.find(params[:id])
+    authorize @holiday
   end
 
   def new
     @holiday = Holiday.new
+    authorize @holiday
   end
 
   def edit
     @holiday = Holiday.find(params[:id])
+    authorize @holiday
   end
 
   def create
     @holiday = Holiday.new(holiday_params)
+    authorize @holiday
     @holiday.save
 
     respond_to do |format|
@@ -35,6 +40,7 @@ class HolidaysController < ApplicationController
   end
 
   def update
+    authorize @holiday
     respond_to do |format|
       if @holiday.update(holiday_params)
         format.html { redirect_to @holiday, notice: 'Holiday was successfully updated.' }
@@ -47,6 +53,7 @@ class HolidaysController < ApplicationController
   end
 
   def destroy
+    authorize @holiday
     @holiday.destroy
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully destroyed.' }
