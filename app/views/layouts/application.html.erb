@@ -96,17 +96,19 @@
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <img src="../assets/global/images/avatars/user1.png" alt="user image">
-                <span class="username">Hi, John Doe</span>
+                <span class="username"><%=t'hi'%>,<%=current_user&.name %></span></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#"><i class="icon-user"></i><span><%=t'my_profile'%></span></a>
+                    <%if current_user.present?%>
+                      <%= link_to t('my_profile'), edit_user_path(current_user), class: "icon-user" %>
+                    <%end%>
                   </li>
                   <li>
                     <a href="#"><i class="icon-calendar"></i><span><%=t'my_holidays'%></span></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-logout"></i><span><%=t'exit'%></span></a>
+                    <a href="/logout"><i class="icon-logout"></i><span><%=t'exit'%></span></a>
                   </li>
                 </ul>
               </li>

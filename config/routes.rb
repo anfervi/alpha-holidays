@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :work_schedules
     resources :holidays
     resources :users
+  devise_scope :user do
+    get "/login" => "devise/sessions#new"
+    get "/logout" => "devise/sessions#destroy"
+  end
 
   resources :holidays do
     member do
