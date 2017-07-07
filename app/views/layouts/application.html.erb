@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="admin-themes-lab">
     <meta name="author" content="themes-lab">
-    <link rel="shortcut icon" href="../assets/global/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="..3/assets/global/images/favicon.png" type="image/png">
     <title>Alpha - Holidays &amp; Builder</title>
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application'%>
@@ -16,7 +16,7 @@
     <link href="../assets/admin/layout1/css/layout.css" rel="stylesheet">
     <!-- BEGIN PAGE STYLE -->
     <link href="../assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet">
-    <link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <!-- END PAGE STYLE -->
     <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
@@ -32,9 +32,9 @@
         <div class="sidebar-inner">
           <div class="logo">
             <%if !nil%>
-              <a href="/holidays"><img src="/assets/global/images/logo/holiday.jpg" width="80%"></a>
+              <a href="/holidays"><img src="../assets/global/images/logo/holiday.jpg" width="80%"></a>
             <%else%>
-              <a href="/holidays"><img src="/assets/global/images/logo/holiday.jpg" width="100%"></a>
+              <a href="/holidays"><img src="../assets/global/images/logo/holiday.jpg" width="100%"></a>
             <%end%>
           </div>
           <div class="sidebar-top">
@@ -96,7 +96,6 @@
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <img src="../assets/global/images/avatars/user1.png" alt="user image">
-                <span class="username"><%=t'hi'%>,<%=current_user&.name %></span></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
