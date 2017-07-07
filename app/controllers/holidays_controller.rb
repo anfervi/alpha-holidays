@@ -1,6 +1,7 @@
 class HolidaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_holiday, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @q = Holiday.ransack(params[:q])
     @holidays = @q.result(distinct:true)

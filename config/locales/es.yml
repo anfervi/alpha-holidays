@@ -1,5 +1,6 @@
 es:
   hello: "Hola Mundo"
+  hi: "Hola"
   search_employee: 'Buscar empleado'
   employee: 'Empleado'
   holidays: 'Vacaciones'
@@ -24,7 +25,8 @@ es:
   search: 'Búsqueda'
   editing_user: 'Editando Usuario'
   new_user: 'Nuevo Usuario'
-  department_contains: 'Departamento contiene'
+  department_contains: 'Unidad de Negocio contiene'
+  department: 'Unidad de Negocio'
   user_name_start_with: 'Nombre contiene'
   year_contains: 'Año contiene'
   search: 'Buscar'

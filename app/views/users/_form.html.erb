@@ -2,14 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, t('name') %>
-    <%= f.input :lastname, t('lastname') %>
-    <%= f.input :email, t('email')%>
-    <%= f.input :department, t('department')%>
-    <%= f.input :role, t('role')%>
+    <%= f.input :name, label:t('name') %>
+    <%= f.input :lastname, label:t('lastname') %>
+    <%= f.input :email, label:t('email')%>
+    <%= f.input :department, label:t('department')%>
+    <%= f.input :role, label:t('role')%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit%>
   </div>
 <% end %>
