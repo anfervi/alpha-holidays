@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe HolidayPolicy do
   let(:holiday) { FactoryGirl.create(:holiday) }
-  context 'for an admin' do
+  context 'for an admin, who could validate or reject a holiday request' do
     subject { HolidayPolicy.new(create(:admin), holiday) }
     it { is_expected.to permit_action(:show)     }
     it { is_expected.to permit_action(:index)    }
@@ -14,7 +14,7 @@ RSpec.describe HolidayPolicy do
     it { is_expected.to permit_action(:validate) }
     it { is_expected.to permit_action(:reject)   }
   end
-  context 'for a manager' do
+  context 'for a manager, who could validate or reject a holiday request' do
     subject { HolidayPolicy.new(create(:manager), holiday) }
     it { is_expected.to permit_action(:show)     }
     it { is_expected.to permit_action(:index)    }
@@ -26,7 +26,7 @@ RSpec.describe HolidayPolicy do
     it { is_expected.to permit_action(:validate) }
     it { is_expected.to permit_action(:reject)   }
   end
-  context 'for an employee' do
+  context 'for an employee, who could not validate or reject a holiday request' do
     subject { HolidayPolicy.new(create(:employee), holiday) }
     it { is_expected.to permit_action(:show)         }
     it { is_expected.to permit_action(:index)        }
