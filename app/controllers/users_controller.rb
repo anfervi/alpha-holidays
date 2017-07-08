@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -31,8 +30,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    # @user = User.find(params[:id])
+    # @roles = User.roles
+    # @user.save
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

@@ -5,8 +5,11 @@
     <%= f.input :name, label:t('name') %>
     <%= f.input :lastname, label:t('lastname') %>
     <%= f.input :email, label:t('email')%>
+    <%= f.input :password, hint: false, error_html: { id: 'password_error'} %>
+    <%= f.input :password_confirmation, label: false %>
     <%= f.input :department, label:t('department')%>
-    <%= f.input :role, label:t('role')%>
+    <%= f.input :role, collection: User.roles.collect { |s| [s[0].titleize, s[0]] }%>
+
   </div>
 
   <div class="form-actions">
