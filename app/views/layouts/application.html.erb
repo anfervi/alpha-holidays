@@ -8,15 +8,15 @@
     <!-- app/assets/javascript/application.js -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <link href="../assets/global/css/style.css" rel="stylesheet">
-    <link href="../assets/global/css/theme.css" rel="stylesheet">
-    <link href="../assets/global/css/ui.css" rel="stylesheet">
-    <link href="../assets/admin/layout1/css/layout.css" rel="stylesheet">
+    <link href="/assets/global/css/style.css" rel="stylesheet">
+    <link href="/assets/global/css/theme.css" rel="stylesheet">
+    <link href="/assets/global/css/ui.css" rel="stylesheet">
+    <link href="/assets/admin/layout1/css/layout.css" rel="stylesheet">
     <!-- BEGIN PAGE STYLE -->
-    <link href="../assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet">
-    <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="/assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet">
+    <link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <!-- END PAGE STYLE -->
-    <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body class="fixed-topbar fixed-sidebar theme-sdtl color-default dashboard">
     <section>
@@ -30,9 +30,9 @@
         <div class="sidebar-inner">
           <div class="logo">
             <%if !nil%>
-              <a href="/holidays"><img src="../assets/global/images/logo/holiday.jpg" width="80%"></a>
+              <a href="/holidays"><img src="/assets/global/images/logo/holiday.jpg" width="80%"></a>
             <%else%>
-              <a href="/holidays"><img src="../assets/global/images/logo/holiday.jpg" width="100%"></a>
+              <a href="/holidays"><img src="/assets/global/images/logo/holiday.jpg" width="100%"></a>
             <%end%>
           </div>
           <div class="sidebar-top">
@@ -82,10 +82,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#" data-lang="en"><img src="../assets/global/images/flags/usa.png" alt="flag-english"> <span><%=t'english'%></span></a>
+                    <a href="#" data-lang="en"><img src="/assets/global/images/flags/usa.png" alt="flag-english"> <span><%=t'english'%></span></a>
                   </li>
                   <li>
-                    <a href="#" data-lang="es"><img src="../assets/global/images/flags/spanish.png" alt="flag-english"> <span><%=t'spanish'%></span></a>
+                    <a href="#" data-lang="es"><img src="/assets/global/images/flags/spanish.png" alt="flag-english"> <span><%=t'spanish'%></span></a>
                   </li>
                 </ul>
               </li>
@@ -93,7 +93,7 @@
               <!-- BEGIN USER DROPDOWN -->
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                <img src="../assets/global/images/avatars/user1.png" alt="user image">
+                <img src="/assets/global/images/avatars/user1.png" alt="user image">
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -141,30 +141,30 @@
     </section>
     <!-- END PRELOADER -->
     <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
-    <script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
-    <script src="../assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
-    <script src="../assets/global/plugins/gsap/main-gsap.min.js"></script>
-    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
-    <script src="../assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
-    <script src="../assets/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
-    <script src="../assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
-    <script src="../assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
-    <script src="../assets/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
-    <script src="../assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
-    <script src="../assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
-    <script src="../assets/global/js/builder.js"></script> <!-- Theme Builder -->
-    <script src="../assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
-    <script src="../assets/global/js/application.js"></script> <!-- Main Application Script -->
-    <script src="../assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
-    <script src="../assets/global/js/pages/search.js"></script> <!-- Search Script -->
+    <script src="/assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="/assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="/assets/global/plugins/gsap/main-gsap.min.js"></script>
+    <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+    <script src="/assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+    <script src="/assets/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+    <script src="/assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+    <script src="/assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+    <script src="/assets/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+    <script src="/assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+    <script src="/assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+    <script src="/assets/global/js/builder.js"></script> <!-- Theme Builder -->
+    <script src="/assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+    <script src="/assets/global/js/application.js"></script> <!-- Main Application Script -->
+    <script src="/assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+    <script src="/assets/global/js/pages/search.js"></script> <!-- Search Script -->
     <!-- BEGIN PAGE SCRIPT -->
-    <script src="../assets/global/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->
-    <script src="../assets/global/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script> <!-- Context Menu -->
-    <script src="../assets/global/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
+    <script src="/assets/global/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->
+    <script src="/assets/global/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script> <!-- Context Menu -->
+    <script src="/assets/global/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
     <!-- END PAGE SCRIPT -->
-    <script src="../assets/admin/layout1/js/layout.js"></script>
+    <script src="/assets/admin/layout1/js/layout.js"></script>
   </body>
 </html>
 
