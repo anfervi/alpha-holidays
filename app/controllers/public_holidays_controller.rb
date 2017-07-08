@@ -1,19 +1,18 @@
+# PublicHolidaysController
 class PublicHolidaysController < ApplicationController
-  before_action :set_public_holiday, only: [:show, :edit, :update, :destroy]
+  before_action :set_public_holiday, only: %i[show edit update destroy]
 
   def index
     @public_holidays = PublicHoliday.all
   end
 
-  def show
-  end
+  def show() end
 
   def new
     @public_holiday = PublicHoliday.new
   end
 
-  def edit
-  end
+  def edit() end
 
   def create
     @public_holiday = PublicHoliday.new(public_holiday_params)

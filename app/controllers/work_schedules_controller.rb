@@ -1,19 +1,18 @@
+# WorkSchedulesController
 class WorkSchedulesController < ApplicationController
-  before_action :set_work_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_work_schedule, only: %i[show edit update destroy]
 
   def index
     @work_schedules = WorkSchedule.all
   end
 
-  def show
-  end
+  def show() end
 
   def new
     @work_schedule = WorkSchedule.new
   end
 
-  def edit
-  end
+  def edit() end
 
   def create
     @work_schedule = WorkSchedule.new(work_schedule_params)

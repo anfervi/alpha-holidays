@@ -1,13 +1,15 @@
+# HolidayPolicy
 class HolidayPolicy < ApplicationPolicy
   attr_reader :user, :holiday
 
   def initialize(user, holiday)
     @user = user
     @holiday = holiday
-  end  
+  end
 
+  # Scope
   class Scope < Scope
-  	attr_reader :user, :scope
+    attr_reader :user, :scope
 
   	def initialize(user, holiday)
   		@user = user
@@ -15,11 +17,11 @@ class HolidayPolicy < ApplicationPolicy
   	end
 
     def resolve
-    	if user.admin?
+      if user.admin?
     		scope.all
     	else
     		scope.where(published: true)
-    	end
+      end
     end
   end
 
@@ -52,10 +54,10 @@ class HolidayPolicy < ApplicationPolicy
   end
 
   def validate?
-  	user.admin? or user.manager?
+  	user.admin? || user.manager?
   end
 
   def reject?
-  	user.admin? or user.manager?
+  	user.admin? || user.manager?
   end
 end
