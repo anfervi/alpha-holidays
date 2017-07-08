@@ -9,9 +9,7 @@
     <%= f.input :password_confirmation, label: false %>
     <%= f.input :department, label:t('department')%>
     <%= f.input :role, collection: User.roles.collect { |s| [s[0].titleize, s[0]] }%>
-
   </div>
-
   <div class="form-actions">
     <%= f.button :submit%>
   </div>

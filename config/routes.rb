@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get 'reject'
     end
   end
-
+  resources :users
   resources :admin
   root to: 'holidays#index'
 end
