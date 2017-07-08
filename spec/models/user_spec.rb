@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe User do
 	before :each do
@@ -11,41 +11,41 @@ describe User do
 		@user.role = 0
 	end
 
-	it "should have_many holidays" do
+	it 'should have_many holidays' do
 		expect(User.reflect_on_association(:holidays).macro).to eq :has_many
 	end
 
-	it "should be valid with name, lastname, department, email, role and password" do
+	it 'should be valid with name, lastname, department, email, role and password' do
 		expect(@user).to be_valid
 	end
 
-	it "should not be valid without a name" do
+	it 'should not be valid without a name' do
 		@user.name = nil
 		expect(@user).to_not be_valid
 	end
 
-	it "should not be valid without a lastname" do
+	it 'should not be valid without a lastname' do
 		@user.lastname = nil
 		expect(@user).to_not be_valid
 	end
 
-	it "should not be valid without a department" do
+	it 'should not be valid without a department' do
 		@user.department = nil
 		expect(@user).to_not be_valid
 	end
 
-	it "should not be valid without a email" do
+	it 'should not be valid without a email' do
 		@user.email = nil
 		expect(@user).to_not be_valid
-	end		
+	end
 
-	it "should not be valid without a role" do
+	it 'should not be valid without a role' do
 		@user.role = nil
 		expect(@user).to_not be_valid
-	end	
+	end
 
-	it "should not be valid without a password" do
+	it 'should not be valid without a password' do
 		@user.password = nil
 		expect(@user).to_not be_valid
-	end	
+	end
 end

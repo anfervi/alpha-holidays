@@ -1,10 +1,11 @@
+# HolidaysController
 class HolidaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_holiday, only: [:show, :edit, :update, :destroy]
+  before_action :set_holiday, only: %i[show edit update destroy]
 
   def index
     @q = Holiday.ransack(params[:q])
-    @holidays = @q.result(distinct:true)
+    @holidays = @q.result(distinct: true)
   end
 
   def show
@@ -26,7 +27,6 @@ class HolidaysController < ApplicationController
     @holiday = Holiday.new(holiday_params)
     authorize @holiday
     @holiday.save
-
     respond_to do |format|
       if @holiday.save
         format.html { redirect_to @holiday, notice: 'Holiday was successfully created.' }
@@ -61,41 +61,25 @@ class HolidaysController < ApplicationController
   end
 
   def validate
-    @holiday = authorize Holiday.find(params[:id])
+    @holiday = Holiday.find(params[:id])
     authorize @holiday
-    if @holiday.status
-      if @holiday.status = 1
-        @holiday.status = 0
-        @holiday.save
-      end
-    else
-      @requested_holidays.status = 0
-      @requested_holidays.save
-    end
+    @holiday.status = 0
+    @holiday.save
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully validated.' }
       format.json { head :no_content }
     end
-
   end
 
   def reject
-    @holiday = authorize Holiday.find(params[:id])
+    @holiday = Holiday.find(params[:id])
     authorize @holiday
-    if @holiday.status
-      if @holiday.status = 0
-        @holiday.status = 1
-        @holiday.save
-      end
-    else
-      @requested_holidays.status = 1
-      @requested_holidays.save
-    end
+    @holiday.status = 1
+    @holiday.save
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully rejected.' }
       format.json { head :no_content }
     end
-
   end
 
   private
@@ -105,11 +89,12 @@ class HolidaysController < ApplicationController
     end
 
     def user_not_authorized
-      flash[:error] = "You are not authorized to perform this action."
+      flash[:error] = 'You are not authorized to perform this action.'
       redirect_to(request.referrer || root_path)
     end
 
     def holiday_params
-      params.require(:holiday).permit(:year, :status, :validator_id, :validated_at, :title, :description, :start_day, :end_day, :user_id)
+      params.require(:holiday).permit(:year, :status, :validator_id, :validated_at, :title, :description, :start_day,
+                                      :end_day, :user_id)
     end
 end

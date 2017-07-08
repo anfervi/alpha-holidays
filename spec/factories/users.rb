@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    name      { Faker::Name.name }
+    name { Faker::Name.name }
     lastname	{ Faker::Name.name }
     department 'Imagen Médica'
     email     { Faker::Internet::email }
