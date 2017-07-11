@@ -1,6 +1,6 @@
 # UsersController
 class UsersController < ApplicationController
-  before_action :set_user, except: %i[index update_password]
+  before_action :set_user, except: %i[index update_password new]
   def index
     @users = User.all
   end
