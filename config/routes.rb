@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       get 'reject'
     end
   end
-  resources :users
+  resource :user, only: [:edit] do
+    collection do
+      patch 'update_password'
+    end
+  end
   resources :admin
   root to: 'holidays#index'
 end
