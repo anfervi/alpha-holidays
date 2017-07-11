@@ -1,7 +1,6 @@
 # UsersController
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
-
+  before_action :set_user, except: :index
   def index
     @users = User.all
   end
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -29,11 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    # @user = User.find(params[:id])
-    # @roles = User.roles
-    # @user.save
     respond_to do |format|
-      if @user.update_attributes(user_params)
+      if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -58,6 +53,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :lastname, :email, :department, :role)
+      params.require(:user).permit(:name, :lastname, :email, :department, :role, :avatar, :password)
     end
 end
