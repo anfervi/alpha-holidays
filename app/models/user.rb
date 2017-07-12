@@ -5,7 +5,7 @@ class User < ApplicationRecord
   attr_accessor :avatar_cache, :remove_avatar
   validates :name, presence: true
   validates :lastname, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :department, presence: true
   validates :role, presence: true
   has_many :holidays

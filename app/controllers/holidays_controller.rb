@@ -83,17 +83,17 @@ class HolidaysController < ApplicationController
 
   private
 
-    def set_holiday
-      @holiday = Holiday.find(params[:holiday_id]).first if params[:holiday_id]
-    end
+  def set_holiday
+    @holiday = Holiday.find(params[:holiday_id]).first if params[:holiday_id]
+  end
 
-    def user_not_authorized
-      flash[:error] = 'You are not authorized to perform this action.'
-      redirect_to(request.referrer || root_path)
-    end
+  def user_not_authorized
+    flash[:error] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || root_path)
+  end
 
-    def holiday_params
-      params.require(:holiday).permit(:year, :status, :validator_id, :validated_at, :title, :description, :start_day,
-                                      :end_day, :user_id)
-    end
+  def holiday_params
+    params.require(:holiday).permit(:year, :status, :validator_id, :validated_at, :title, :description, :start_day,
+                                    :end_day, :user_id)
+  end
 end
