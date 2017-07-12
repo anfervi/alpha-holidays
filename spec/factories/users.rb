@@ -1,5 +1,4 @@
 # spec/factories/users.rb
-
 FactoryGirl.define do
   factory :user do
     name { Faker::Name.name }

@@ -8,9 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :department, presence: true
   validates :role, presence: true
-  validates_presence_of :avatar
-  validates_integrity_of :avatar
-  validates_processing_of :avatar
   has_many :holidays
   enum role: { admin: 0, manager: 1, employee: 2 }
 end
