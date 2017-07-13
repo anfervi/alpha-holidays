@@ -11,16 +11,16 @@ class HolidayPolicy < ApplicationPolicy
   class Scope < Scope
     attr_reader :user, :scope
 
-  	def initialize(user, holiday)
-  		@user = user
-  		@authorizable = holiday
-  	end
+    def initialize(user, holiday)
+      @user = user
+      @authorizable = holiday
+    end
 
     def resolve
       if user.admin?
-    		scope.all
-    	else
-    		scope.where(published: true)
+        scope.all
+      else
+        scope.where(published: true)
       end
     end
   end
@@ -54,10 +54,10 @@ class HolidayPolicy < ApplicationPolicy
   end
 
   def validate?
-  	user.admin? || user.manager?
+    user.admin? || user.manager?
   end
 
   def reject?
-  	user.admin? || user.manager?
+    user.admin? || user.manager?
   end
 end

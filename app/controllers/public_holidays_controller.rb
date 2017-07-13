@@ -50,11 +50,11 @@ class PublicHolidaysController < ApplicationController
 
   private
 
-    def set_public_holiday
-      @public_holiday = PublicHoliday.find(params[:id])
-    end
+  def set_public_holiday
+    @public_holiday = PublicHoliday.find(params[:id])
+  end
 
-    def public_holiday_params
-      params.require(:public_holiday).permit(:name, :day, :work_calendar_id)
-    end
+  def public_holiday_params
+    params.require(:public_holiday).permit(:name, :day, :work_calendar_id)
+  end
 end

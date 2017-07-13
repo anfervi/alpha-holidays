@@ -50,11 +50,11 @@ class WorkSchedulesController < ApplicationController
 
   private
 
-    def set_work_schedule
-      @work_schedule = WorkSchedule.find(params[:id])
-    end
+  def set_work_schedule
+    @work_schedule = WorkSchedule.find(params[:id])
+  end
 
-    def work_schedule_params
-      params.require(:work_schedule).permit(:name, :company, :year, :holiday_id)
-    end
+  def work_schedule_params
+    params.require(:work_schedule).permit(:name, :company, :year, :holiday_id)
+  end
 end

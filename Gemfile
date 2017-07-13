@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap-sass'
+gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
@@ -15,12 +16,11 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'pundit'
 gem 'rails', '~> 5.1.1'
-gem 'carrierwave', '~> 1.0'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sass-rails', '~> 5.0'
 gem 'simple-form-datepicker'
-gem 'simple_form_fancy_uploads'
 gem 'simple_form'
+gem 'simple_form_fancy_uploads'
 gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
@@ -35,7 +35,8 @@ group :development, :test do
 end
 
 group :development do
-  gem "better_errors"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'rubocop-rspec'

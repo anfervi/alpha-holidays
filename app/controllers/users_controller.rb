@@ -54,17 +54,18 @@ class UsersController < ApplicationController
       bypass_sign_in(@user)
       redirect_to root_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:name, :lastname, :email, :department, :role, :avatar, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :lastname, :email, :department, :role, :avatar, :password,
+                                 :password_confirmation)
+  end
 end
