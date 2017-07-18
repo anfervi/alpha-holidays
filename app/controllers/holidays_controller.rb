@@ -5,11 +5,28 @@ class HolidaysController < ApplicationController
   def index
     @q = Holiday.ransack(params[:q])
     @holidays = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @holidays.as_csv }
+      format.pdf do
+        html = render_to_string template: 'holidays/index.pdf.erb'
+        pdf = PDFKit.new(html, encoding: 'UTF-8')
+        send_data pdf.to_pdf, type: 'application/pdf'
+      end
+    end
   end
 
   def show
     @holiday = Holiday.find(params[:id])
     authorize @holiday
+    respond_to do |format|
+      format.html
+      format.pdf do
+        html = render_to_string template: 'holidays/show.pdf.erb'
+        pdf = PDFKit.new(html, encoding: 'UTF-8')
+        send_data pdf.to_pdf, type: 'application/pdf'
+      end
+    end
   end
 
   def new
