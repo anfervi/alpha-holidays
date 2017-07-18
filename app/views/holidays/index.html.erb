@@ -42,8 +42,11 @@
               <th class="text-center"><%= sort_link @q, :start_day, t('start_day')%></th>
               <th class="text-center"><%= sort_link @q, :end_day, t('end_day')%></th>
               <th class="text-center" style="width:25%;"></th>
-              <%=link_to holidays_path(@holidays, format: "pdf"), class:"btn btn-success" do%>
+              <%=link_to holidays_path(@holidays, format: "pdf"), class:"btn btn-warning" do%>
                 <i class="fa fa-print"></i>
+              <%end%>
+              <%=link_to holidays_path(@holiday, format: "csv"), class:"btn btn-success" do%>
+                <i class="fa fa-file-excel-o"></i>
               <%end%>
             </tr>
           </thead>

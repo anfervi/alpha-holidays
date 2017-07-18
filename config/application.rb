@@ -1,6 +1,6 @@
 # application.rb
-require_relative 'boot'
 require 'rails/all'
+require 'csv'
 require 'pdfkit'
 
 Bundler.require(*Rails.groups)

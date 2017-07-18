@@ -7,6 +7,7 @@ class HolidaysController < ApplicationController
     @holidays = @q.result(distinct: true)
     respond_to do |format|
       format.html
+      format.csv { send_data @holidays.as_csv }
       format.pdf do
         html = render_to_string template: "holidays/index.pdf.erb"
         pdf = PDFKit.new(html, encoding: "UTF-8")
