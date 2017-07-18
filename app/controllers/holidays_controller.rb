@@ -11,8 +11,7 @@ class HolidaysController < ApplicationController
       format.pdf do
         html = render_to_string template: "holidays/index.pdf.erb"
         pdf = PDFKit.new(html, encoding: "UTF-8")
-        send_data pdf.to_pdf,
-            type: "application/pdf"
+        send_data pdf.to_pdf, type: "application/pdf"
       end
     end
   end
@@ -25,8 +24,7 @@ class HolidaysController < ApplicationController
       format.pdf do
         html = render_to_string template: "holidays/show.pdf.erb"
         pdf = PDFKit.new(html, encoding: "UTF-8")
-        send_data pdf.to_pdf,
-            type: "application/pdf"
+        send_data pdf.to_pdf, type: "application/pdf"
       end
     end
   end

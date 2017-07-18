@@ -1,0 +1,37 @@
+<h2> Solicitud de Vacaciones de <%= holiday.user.full_name %> (<%=holiday.created_at%>)</h2>
+<p>
+  <strong><%=t'year'%>:</strong>
+  <%= holiday.year %>
+</p>
+<p>
+  <strong><%=t'status'%>:</strong>
+  <%= holiday.status %>
+</p>
+<p>
+  <strong><%=t'validator'%>:</strong>
+  <%= holiday.validator_id %>
+</p>
+<p>
+  <strong><%=t'validated_at'%>:</strong>
+  <%= holiday.validated_at %>
+</p>
+<p>
+  <strong><%=t'title'%>:</strong>
+  <%= holiday.title %>
+</p>
+<p>
+  <strong><%=t'description'%>:</strong>
+  <%= holiday.description %>
+</p>
+<p>
+  <strong><%=t'start_day'%>:</strong>
+  <%= holiday.start_day %>
+</p>
+<p>
+  <strong><%=t'end_day'%>:</strong>
+  <%= holiday.end_day %>
+</p>
+<p>
+  <strong><%=t'user'%></strong>
+  <%= holiday.user.full_name %>
+</p>
