@@ -1,0 +1,16 @@
+.block-section.form-inline
+  .panel.panel-default.panel-condensed
+    .panel-heading.separator
+      i.fa.fa-search
+      .panel-title
+        =t('search')
+    .panel-body
+      = search_form_for @q do |f|
+        = f.label :department_cont, t('department_contains')
+        = f.search_field :department_cont
+        = f.label :user_name_start, t('user_name_start_with')
+        = f.search_field :user_name_start
+        = f.label :year_cont, t('year_contains')
+        = f.search_field :year_cont
+        = f.submit t('search')
+  = render 'list_holidays', holidays: @holidays, q: @q

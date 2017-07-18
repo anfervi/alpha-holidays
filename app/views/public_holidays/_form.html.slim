@@ -1,0 +1,8 @@
+= simple_form_for(@public_holiday) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :day
+    = f.association :work_calendar
+  .form-actions
+    = f.button :submit

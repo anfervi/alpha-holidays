@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @work_schedule.name
+p
+  strong
+    | Company:
+  = @work_schedule.company
+p
+  strong
+    | Year:
+  = @work_schedule.year
+p
+  strong
+    | Holiday:
+  = @work_schedule.holiday
+= link_to 'Edit', edit_work_schedule_path(@work_schedule)
+|  | 
+= link_to 'Back', work_schedules_path

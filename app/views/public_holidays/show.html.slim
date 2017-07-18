@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @public_holiday.name
+p
+  strong
+    | Day:
+  = @public_holiday.day
+p
+  strong
+    | Work calendar:
+  = @public_holiday.work_calendar
+= link_to 'Edit', edit_public_holiday_path(@public_holiday)
+|  | 
+= link_to 'Back', public_holidays_path

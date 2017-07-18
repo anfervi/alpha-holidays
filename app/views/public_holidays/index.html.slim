@@ -1,0 +1,31 @@
+p#notice
+  = notice
+h1
+  | Public Holidays
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Day
+      th
+        | Work calendar
+      th[colspan="3"]
+  tbody
+    - @public_holidays.each do |public_holiday|
+      tr
+        td
+          = public_holiday.name
+        td
+          = public_holiday.day
+        td
+          = public_holiday.work_calendar
+        td
+          = link_to 'Show', public_holiday
+        td
+          = link_to 'Edit', edit_public_holiday_path(public_holiday)
+        td
+          = link_to 'Destroy', public_holiday, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Public Holiday', new_public_holiday_path

@@ -1,0 +1,13 @@
+= simple_form_for @user, html: {multipart: true }, :url => update_password_user_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, label:t('name')
+    = f.input :lastname, label:t('lastname')
+    = f.input :email, label:t('email')
+    = f.input :password, hint: false, error_html: { id: 'password_error'}
+    = f.input :password_confirmation, label: false
+    = f.input :department, label:t('department')
+    = f.input :role, collection: User.roles.collect { |s| [s[0].titleize, s[0]] }
+    = f.input :avatar, as: :image_preview
+  .form-actions
+    = f.button :submit

@@ -9,7 +9,7 @@ class HolidaysController < ApplicationController
       format.html
       format.csv { send_data @holidays.as_csv }
       format.pdf do
-        html = render_to_string template: 'holidays/index.pdf.erb'
+        html = render_to_string template: 'holidays/index.pdf.slim'
         pdf = PDFKit.new(html, encoding: 'UTF-8')
         send_data pdf.to_pdf, type: 'application/pdf'
       end
@@ -22,7 +22,7 @@ class HolidaysController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        html = render_to_string template: 'holidays/show.pdf.erb'
+        html = render_to_string template: 'holidays/show.pdf.slim'
         pdf = PDFKit.new(html, encoding: 'UTF-8')
         send_data pdf.to_pdf, type: 'application/pdf'
       end

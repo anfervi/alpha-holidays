@@ -1,0 +1,160 @@
+doctype html
+html[lang="es"]
+  head
+    meta[charset="utf-8"]
+    title
+      | Alpha - Holidays & Builder
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    link[href="/assets/global/css/style.css" rel="stylesheet"]
+    link[href="/assets/global/css/theme.css" rel="stylesheet"]
+    link[href="/assets/global/css/ui.css" rel="stylesheet"]
+    link[href="/assets/admin/layout1/css/layout.css" rel="stylesheet"]
+    link[href="/assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet"]
+    link[href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet"]
+    script[src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"]
+  body.fixed-topbar.fixed-sidebar.theme-sdtl.color-default.dashboard
+    section
+      .sidebar
+        .logopanel
+          h1
+            |  Alpha - Holidays 
+        .sidebar-inner
+          .logo
+            - if !nil
+              a[href="/holidays"]
+                img[src="/assets/global/images/logo/holiday.jpg" width="80%"]
+            - else
+              a[href="/holidays"]
+                img[src="/assets/global/images/logo/holiday.jpg" width="100%"]
+          .sidebar-top
+            form#search-results.searchform[action="/users" method="post"]
+              - if @search.present?
+                |  <input type="text" class="form-control" name="search" placeholder=t('search_employee') value="
+                =@search.mb_chars
+                | "> 
+              - else
+                input.form-control[type="text" name="search" placeholder="Buscar empleado..."]
+          ul.nav.nav-sidebar
+            li.nav-active
+              a[href="/users"]
+                i.fa.fa-users
+                span
+                  =t'employee'
+            li.nav-parent
+              a[href="/holidays"]
+                i.fa.fa-plane
+                span
+                  =t'holidays'
+                span.fa.arrow
+              ul.children.collapse
+                li
+                  a[href="/settings/users"]
+                    i.fa.fa-check
+                    =t'validate'
+                li
+                  a[href="/holidays/new"]
+                    i.fa.fa-question
+                    =t'request'
+                li
+                  a[href="/holidays/index"]
+                    i.fa.fa-search
+                    =t'search'
+            li.nav-parent
+              a[href="/work_schedule"]
+                i.fa.fa-calendar
+                span
+                  =t'work_schedule'
+          .sidebar-footer.clearfix
+            a.pull-left.toggle_fullscreen[href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen"]
+              i.icon-size-fullscreen
+      .main-content
+        .topbar
+          .header-left
+
+          .header-right
+            ul.header-menu.nav.navbar-nav
+              li#language-header.dropdown
+                a[href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"]
+                  i.icon-globe
+                  span
+                    =t'lenguage'
+                ul.dropdown-menu
+                  li
+                    a[href="#" data-lang="en"]
+                      img[src="/assets/global/images/flags/usa.png" alt="flag-english"]
+                      span
+                        =t'english'
+                  li
+                    a[href="#" data-lang="es"]
+                      img[src="/assets/global/images/flags/spanish.png" alt="flag-english"]
+                      span
+                        =t'spanish'
+              li#user-header.dropdown
+                a[href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"]
+                  = render_avatar
+                ul.dropdown-menu
+                  li
+                    - if current_user.present?
+                      = link_to t('my_profile'), edit_user_path(current_user), class: "icon-user"
+                  li
+                    a[href="#"]
+                      i.icon-calendar
+                      span
+                        =t'my_holidays'
+                  li
+                    a[href="/logout"]
+                      i.icon-logout
+                      span
+                        =t'exit'
+        .page-content.page-thin
+          .row
+            = yield
+          .footer
+            .copyright
+              p.pull-left.sm-pull-reset
+                span
+                  | Copyright 
+                  span.copyright
+                    | ©
+                  |  2017 
+                span
+                  | ALFATEC SISTEMAS S.L.
+                | . 
+                span
+                  =t'all_rights_reserved'
+              p.pull-right.sm-pull-reset
+                span
+                  a.m-r-10[href="#"]
+                    =t'support'
+                  |  | 
+                  a.m-l-10.m-r-10[href="#"]
+                    =t'terms_of_use'
+                  |  | 
+                  a.m-l-10[href="#"]
+                    =t'privacy_policy'
+    a.scrollup[href="#"]
+      i.fa.fa-angle-up
+    script[src="/assets/global/plugins/jquery/jquery-1.11.1.min.js"]
+    script[src="/assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"]
+    script[src="/assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"]
+    script[src="/assets/global/plugins/gsap/main-gsap.min.js"]
+    script[src="/assets/global/plugins/bootstrap/js/bootstrap.min.js"]
+    script[src="/assets/global/plugins/jquery-cookies/jquery.cookies.min.js"]
+    script[src="/assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"]
+    script[src="/assets/global/plugins/bootbox/bootbox.min.js"]
+    script[src="/assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"]
+    script[src="/assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"]
+    script[src="/assets/global/plugins/select2/select2.min.js"]
+    script[src="/assets/global/plugins/icheck/icheck.min.js"]
+    script[src="/assets/global/plugins/backstretch/backstretch.min.js"]
+    script[src="/assets/global/js/builder.js"]
+    script[src="/assets/global/js/sidebar_hover.js"]
+    script[src="/assets/global/js/application.js"]
+    script[src="/assets/global/js/plugins.js"]
+    script[src="/assets/global/js/pages/search.js"]
+    script[src="/assets/global/plugins/noty/jquery.noty.packaged.min.js"]
+    script[src="/assets/global/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"]
+    script[src="/assets/global/plugins/multidatepicker/multidatespicker.min.js"]
+    script[src="/assets/admin/layout1/js/layout.js"]

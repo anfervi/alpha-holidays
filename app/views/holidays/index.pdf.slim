@@ -1,0 +1,56 @@
+.panel.panel-default.panel-condensed
+  .panel-heading.separator
+    i.fa.fa-list
+    .panel-title
+      =t('holidays_list')
+  .panel-body
+    #section_all__done.table-responsive
+      table#condensedTable.table.table-hover
+        thead
+          tr
+            th.text-center
+              = sort_link @q, :id, t('id')
+            th.text-center
+              = sort_link @q, :year, t('year')
+            th.text-center
+              = sort_link @q, :status, t('status')
+            th.text-center
+              = sort_link @q, :validator_id, t('validator')
+            th.text-center
+              = sort_link @q, :validated_at, t('validated_at')
+            th.text-center
+              = sort_link @q, :title, t('title')
+            th.text-center
+              = sort_link @q, :description, t('description')
+            th.text-center
+              = sort_link @q, :start_day, t('start_day')
+            th.text-center
+              = sort_link @q, :end_day, t('end_day')
+            th.text-center[style="width:25%;"]
+        tbody
+          - myStyle="padding-top:2px;padding-bottom:2px"
+          - @holidays.each do |holiday|
+            tr.text-success.bg-success
+              td.text-center
+                = holiday.id
+              td.text-center
+                = holiday.year
+              td.text-center
+                = holiday.status
+              td.text-center
+                = holiday.validator_id
+              td.text-center
+                = holiday.validated_at
+              td.text-center
+                = holiday.title
+              td.text-center
+                = holiday.description
+              td.text-center
+                = holiday.start_day
+              td.text-center
+                = holiday.end_day
+              td.text-center
+                = link_to reject_holiday_path(holiday.id), class:"btn btn-sm btn-danger", title: 'Rechazar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do
+                  i.fa.fa-reply-all
+                = link_to validate_holiday_path(holiday.id), class:"btn btn-sm btn-success", title: 'Aceptar', 'data-toggle' => 'tooltip', 'data_placement' => 'center' do
+                  i.fa.fa-check
