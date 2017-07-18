@@ -3,4 +3,4 @@ require_relative 'application'
 
 # Initialize the Rails application.
 Rails.application.initialize!
-Mime::Type.register "application/pdf", :pdf
+Mime::Type.register 'application/pdf', :pdf

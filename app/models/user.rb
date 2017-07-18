@@ -12,6 +12,6 @@ class User < ApplicationRecord
   enum role: { admin: 0, manager: 1, employee: 2 }
 
   def full_name
-    return "#{name} #{lastname}".upcase
+    "#{name} #{lastname}".upcase
   end
 end
