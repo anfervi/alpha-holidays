@@ -1,6 +1,7 @@
 # application.rb
 require_relative 'boot'
 require 'rails/all'
+require 'pdfkit'
 
 Bundler.require(*Rails.groups)
 
@@ -11,5 +12,6 @@ module AlphaHolidays
     config.assets.precompile += %w[.svg .eot .woff .ttf]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**' '*.{rb.yml}').to_s]
     config.i18n.default_locale = :es
+    config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end

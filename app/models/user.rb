@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :role, presence: true
   has_many :holidays
   enum role: { admin: 0, manager: 1, employee: 2 }
+
+  def full_name
+    return "#{name} #{lastname}".upcase
+  end
 end
