@@ -1,0 +1,46 @@
+p#notice
+  = notice
+p
+  strong
+    =t'year'
+    | :
+  = @holiday.year
+p
+  strong
+    =t'status'
+    | :
+  = @holiday.status
+p
+  strong
+    =t'validator'
+    | :
+  = @holiday.validator_id
+p
+  strong
+    =t'validated_at'
+    | :
+  = @holiday.validated_at
+p
+  strong
+    =t'title'
+    | :
+  = @holiday.title
+p
+  strong
+    =t'description'
+    | :
+  = @holiday.description
+p
+  strong
+    =t'start_day'
+    | :
+  = @holiday.start_day
+p
+  strong
+    =t'end_day'
+    | :
+  = @holiday.end_day
+p
+  strong
+    =t'user'
+  = @holiday.user

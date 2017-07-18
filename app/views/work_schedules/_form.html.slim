@@ -1,0 +1,9 @@
+= simple_form_for(@work_schedule) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :company
+    = f.input :year
+    = f.association :holiday
+  .form-actions
+    = f.button :submit

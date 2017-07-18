@@ -1,0 +1,24 @@
+= simple_form_for @holiday,
+-     :url => url_for(:action => 'create', :controller => 'holidays'),
+-     :method => 'post' do |f|
+= f.error_notification
+.form-inputs
+  .row
+    .col-sm-12
+      .col-md-2
+        = f.input :year,label:t('year')
+      .col-md-8
+        = f.input :title,label:t('title')
+      .col-md-2
+        = f.input :user_id,label:t('user')
+      div
+        .col-sm-12
+          .col-md-12
+            = f.input :description,label:t('description')
+        .col-sm-12
+          .col-md-6
+            = f.input :start_day,label:t('start_day')
+          .col-md-6
+            = f.input :end_day,label:t('end_day')
+    .form-actions
+      = f.button :submit
