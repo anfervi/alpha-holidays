@@ -1,0 +1,30 @@
+= form_for @curriculum do |f|
+  - if @curriculum.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@curriculum.errors.count, "error")} prohibited this curriculum from being saved:"
+      ul
+        - @curriculum.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :adress
+    = f.text_field :adress
+  .field
+    = f.label :postal_code
+    = f.text_field :postal_code
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :birthdate
+    = f.date_select :birthdate
+  .field
+    = f.label :nationality
+    = f.text_field :nationality
+  .field
+    = f.label :user
+    = f.text_field :user
+  .actions = f.submit

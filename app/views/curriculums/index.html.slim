@@ -1,0 +1,33 @@
+h1 Listing curriculums
+
+table
+  thead
+    tr
+      th Adress
+      th Postal code
+      th City
+      th Phone
+      th Birthdate
+      th Nationality
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @curriculums.each do |curriculum|
+      tr
+        td = curriculum.adress
+        td = curriculum.postal_code
+        td = curriculum.city
+        td = curriculum.phone
+        td = curriculum.birthdate
+        td = curriculum.nationality
+        td = curriculum.user
+        td = link_to 'Show', curriculum
+        td = link_to 'Edit', edit_curriculum_path(curriculum)
+        td = link_to 'Destroy', curriculum, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Curriculum', new_curriculum_path

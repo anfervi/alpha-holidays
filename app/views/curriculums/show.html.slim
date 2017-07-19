@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Adress:
+  = @curriculum.adress
+p
+  strong Postal code:
+  = @curriculum.postal_code
+p
+  strong City:
+  = @curriculum.city
+p
+  strong Phone:
+  = @curriculum.phone
+p
+  strong Birthdate:
+  = @curriculum.birthdate
+p
+  strong Nationality:
+  = @curriculum.nationality
+p
+  strong User:
+  = @curriculum.user
+
+= link_to 'Edit', edit_curriculum_path(@curriculum)
+'  |
+= link_to 'Back', curriculums_path
