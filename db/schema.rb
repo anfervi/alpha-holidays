@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_719_100_033) do
+ActiveRecord::Schema.define(version: 20_170_719_101_145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -148,6 +148,20 @@ ActiveRecord::Schema.define(version: 20_170_719_100_033) do
     t.index ['email'], name: 'index_users_on_email', unique: true
   end
 
+  create_table 'work_experiences', force: :cascade do |t|
+    t.date 'start_date'
+    t.date 'end_date'
+    t.string 'position'
+    t.string 'company'
+    t.string 'city'
+    t.text 'activities'
+    t.text 'technologies'
+    t.bigint 'curriculum_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['curriculum_id'], name: 'index_work_experiences_on_curriculum_id'
+  end
+
   create_table 'work_schedules', force: :cascade do |t|
     t.string 'name'
     t.string 'company'
@@ -161,4 +175,5 @@ ActiveRecord::Schema.define(version: 20_170_719_100_033) do
   add_foreign_key 'curriculums', 'users'
   add_foreign_key 'educations', 'curriculums'
   add_foreign_key 'languages', 'curriculums'
+  add_foreign_key 'work_experiences', 'curriculums'
 end

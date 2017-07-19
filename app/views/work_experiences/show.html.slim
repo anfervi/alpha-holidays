@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Start date:
+  = @work_experience.start_date
+p
+  strong End date:
+  = @work_experience.end_date
+p
+  strong Position:
+  = @work_experience.position
+p
+  strong Company:
+  = @work_experience.company
+p
+  strong City:
+  = @work_experience.city
+p
+  strong Activities:
+  = @work_experience.activities
+p
+  strong Technologies:
+  = @work_experience.technologies
+p
+  strong Curriculum:
+  = @work_experience.curriculum
+
+= link_to 'Edit', edit_work_experience_path(@work_experience)
+'  |
+= link_to 'Back', work_experiences_path

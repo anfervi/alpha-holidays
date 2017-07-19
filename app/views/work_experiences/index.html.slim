@@ -1,0 +1,35 @@
+h1 Listing work_experiences
+
+table
+  thead
+    tr
+      th Start date
+      th End date
+      th Position
+      th Company
+      th City
+      th Activities
+      th Technologies
+      th Curriculum
+      th
+      th
+      th
+
+  tbody
+    - @work_experiences.each do |work_experience|
+      tr
+        td = work_experience.start_date
+        td = work_experience.end_date
+        td = work_experience.position
+        td = work_experience.company
+        td = work_experience.city
+        td = work_experience.activities
+        td = work_experience.technologies
+        td = work_experience.curriculum
+        td = link_to 'Show', work_experience
+        td = link_to 'Edit', edit_work_experience_path(work_experience)
+        td = link_to 'Destroy', work_experience, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Work experience', new_work_experience_path
