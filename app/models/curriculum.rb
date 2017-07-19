@@ -1,3 +1,4 @@
+# Curriculum
 class Curriculum < ApplicationRecord
   belongs_to :user
   has_many :educations, dependent: :destroy
