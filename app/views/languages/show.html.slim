@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Language:
+  = @language.language
+p
+  strong Speaking:
+  = @language.speaking
+p
+  strong Writing:
+  = @language.writing
+p
+  strong Reading:
+  = @language.reading
+p
+  strong Curriculum:
+  = @language.curriculum
+
+= link_to 'Edit', edit_language_path(@language)
+'  |
+= link_to 'Back', languages_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_719_094_936) do
+ActiveRecord::Schema.define(version: 20_170_719_100_033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -107,6 +107,17 @@ ActiveRecord::Schema.define(version: 20_170_719_094_936) do
     t.index ['user_id'], name: 'index_holidays_on_user_id'
   end
 
+  create_table 'languages', force: :cascade do |t|
+    t.string 'language'
+    t.integer 'speaking'
+    t.integer 'writing'
+    t.integer 'reading'
+    t.bigint 'curriculum_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['curriculum_id'], name: 'index_languages_on_curriculum_id'
+  end
+
   create_table 'public_holidays', force: :cascade do |t|
     t.string 'name'
     t.date 'day'
@@ -149,4 +160,5 @@ ActiveRecord::Schema.define(version: 20_170_719_094_936) do
 
   add_foreign_key 'curriculums', 'users'
   add_foreign_key 'educations', 'curriculums'
+  add_foreign_key 'languages', 'curriculums'
 end

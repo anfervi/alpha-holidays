@@ -1,0 +1,24 @@
+= form_for @language do |f|
+  - if @language.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@language.errors.count, "error")} prohibited this language from being saved:"
+      ul
+        - @language.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :language
+    = f.text_field :language
+  .field
+    = f.label :speaking
+    = f.number_field :speaking
+  .field
+    = f.label :writing
+    = f.number_field :writing
+  .field
+    = f.label :reading
+    = f.number_field :reading
+  .field
+    = f.label :curriculum
+    = f.text_field :curriculum
+  .actions = f.submit
