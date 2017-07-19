@@ -3,10 +3,10 @@ FactoryGirl.define do
     type 1
     start_date '2017-07-19'
     end_date '2017-07-19'
-    title 'MyString'
-    center 'MyString'
-    city 'MyString'
-    duration 1
-    curriculum nil
+    title 'Master de Esgrima'
+    center 'Shaolin'
+    city 'Birmania'
+    duration 100
+    curriculum 1
   end
 end

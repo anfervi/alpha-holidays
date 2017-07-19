@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :curriculum do
-    adress 'MyString'
-    postal_code 'MyString'
-    city 'MyString'
-    phone 'MyString'
+    adress 'C/Primado Reig'
+    postal_code '46019'
+    city 'Valencia'
+    phone '666666666'
     birthdate '2017-07-19'
-    nationality 'MyString'
-    user nil
+    nationality 'Inglés'
+    user 1
   end
 end
