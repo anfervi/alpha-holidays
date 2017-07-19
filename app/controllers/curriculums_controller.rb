@@ -1,5 +1,5 @@
 class CurriculumsController < ApplicationController
-  before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  before_action :set_curriculum, only: %i[show edit update destroy]
 
   # GET /curriculums
   # GET /curriculums.json
@@ -9,8 +9,7 @@ class CurriculumsController < ApplicationController
 
   # GET /curriculums/1
   # GET /curriculums/1.json
-  def show
-  end
+  def show; end
 
   # GET /curriculums/new
   def new
@@ -18,8 +17,7 @@ class CurriculumsController < ApplicationController
   end
 
   # GET /curriculums/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /curriculums
   # POST /curriculums.json
@@ -62,13 +60,14 @@ class CurriculumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_curriculum
-      @curriculum = Curriculum.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def curriculum_params
-      params.require(:curriculum).permit(:adress, :postal_code, :city, :phone, :birthdate, :nationality, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_curriculum
+    @curriculum = Curriculum.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def curriculum_params
+    params.require(:curriculum).permit(:adress, :postal_code, :city, :phone, :birthdate, :nationality, :user_id)
+  end
 end

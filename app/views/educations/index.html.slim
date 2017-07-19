@@ -1,0 +1,35 @@
+h1 Listing educations
+
+table
+  thead
+    tr
+      th Type
+      th Start date
+      th End date
+      th Title
+      th Center
+      th City
+      th Duration
+      th Curriculum
+      th
+      th
+      th
+
+  tbody
+    - @educations.each do |education|
+      tr
+        td = education.type
+        td = education.start_date
+        td = education.end_date
+        td = education.title
+        td = education.center
+        td = education.city
+        td = education.duration
+        td = education.curriculum
+        td = link_to 'Show', education
+        td = link_to 'Edit', edit_education_path(education)
+        td = link_to 'Destroy', education, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Education', new_education_path

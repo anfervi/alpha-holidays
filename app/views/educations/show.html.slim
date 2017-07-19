@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Type:
+  = @education.type
+p
+  strong Start date:
+  = @education.start_date
+p
+  strong End date:
+  = @education.end_date
+p
+  strong Title:
+  = @education.title
+p
+  strong Center:
+  = @education.center
+p
+  strong City:
+  = @education.city
+p
+  strong Duration:
+  = @education.duration
+p
+  strong Curriculum:
+  = @education.curriculum
+
+= link_to 'Edit', edit_education_path(@education)
+'  |
+= link_to 'Back', educations_path

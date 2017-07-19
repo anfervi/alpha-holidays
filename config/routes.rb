@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :educations
   resources :curriculums
   devise_for :users
   resources :public_holidays

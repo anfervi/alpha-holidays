@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "curriculums/show", type: :view do
+RSpec.describe 'curriculums/show', type: :view do
   before(:each) do
     @curriculum = assign(:curriculum, Curriculum.create!(
-      :adress => "Adress",
-      :postal_code => "Postal Code",
-      :city => "City",
-      :phone => "Phone",
-      :nationality => "Nationality",
-      :user => nil
+                                        adress: 'Adress',
+                                        postal_code: 'Postal Code',
+                                        city: 'City',
+                                        phone: 'Phone',
+                                        nationality: 'Nationality',
+                                        user: nil
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Adress/)
     expect(rendered).to match(/Postal Code/)

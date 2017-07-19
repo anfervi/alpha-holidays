@@ -23,9 +23,9 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe CurriculumsController, type: :controller do
+RSpec.describe EducationsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
-  # Curriculum. As you add validations to Curriculum, be sure to
+  # Education. As you add validations to Education, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
@@ -37,12 +37,12 @@ RSpec.describe CurriculumsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # CurriculumsController. Be sure to keep this updated too.
+  # EducationsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe 'GET #index' do
     it 'returns a success response' do
-      curriculum = Curriculum.create! valid_attributes
+      education = Education.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -50,8 +50,8 @@ RSpec.describe CurriculumsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns a success response' do
-      curriculum = Curriculum.create! valid_attributes
-      get :show, params: { id: curriculum.to_param }, session: valid_session
+      education = Education.create! valid_attributes
+      get :show, params: { id: education.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
@@ -65,29 +65,29 @@ RSpec.describe CurriculumsController, type: :controller do
 
   describe 'GET #edit' do
     it 'returns a success response' do
-      curriculum = Curriculum.create! valid_attributes
-      get :edit, params: { id: curriculum.to_param }, session: valid_session
+      education = Education.create! valid_attributes
+      get :edit, params: { id: education.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe 'POST #create' do
     context 'with valid params' do
-      it 'creates a new Curriculum' do
+      it 'creates a new Education' do
         expect do
-          post :create, params: { curriculum: valid_attributes }, session: valid_session
-        end.to change(Curriculum, :count).by(1)
+          post :create, params: { education: valid_attributes }, session: valid_session
+        end.to change(Education, :count).by(1)
       end
 
-      it 'redirects to the created curriculum' do
-        post :create, params: { curriculum: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(Curriculum.last)
+      it 'redirects to the created education' do
+        post :create, params: { education: valid_attributes }, session: valid_session
+        expect(response).to redirect_to(Education.last)
       end
     end
 
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: { curriculum: invalid_attributes }, session: valid_session
+        post :create, params: { education: invalid_attributes }, session: valid_session
         expect(response).to be_success
       end
     end
@@ -99,41 +99,41 @@ RSpec.describe CurriculumsController, type: :controller do
         skip('Add a hash of attributes valid for your model')
       end
 
-      it 'updates the requested curriculum' do
-        curriculum = Curriculum.create! valid_attributes
-        put :update, params: { id: curriculum.to_param, curriculum: new_attributes }, session: valid_session
-        curriculum.reload
+      it 'updates the requested education' do
+        education = Education.create! valid_attributes
+        put :update, params: { id: education.to_param, education: new_attributes }, session: valid_session
+        education.reload
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the curriculum' do
-        curriculum = Curriculum.create! valid_attributes
-        put :update, params: { id: curriculum.to_param, curriculum: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(curriculum)
+      it 'redirects to the education' do
+        education = Education.create! valid_attributes
+        put :update, params: { id: education.to_param, education: valid_attributes }, session: valid_session
+        expect(response).to redirect_to(education)
       end
     end
 
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        curriculum = Curriculum.create! valid_attributes
-        put :update, params: { id: curriculum.to_param, curriculum: invalid_attributes }, session: valid_session
+        education = Education.create! valid_attributes
+        put :update, params: { id: education.to_param, education: invalid_attributes }, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe 'DELETE #destroy' do
-    it 'destroys the requested curriculum' do
-      curriculum = Curriculum.create! valid_attributes
+    it 'destroys the requested education' do
+      education = Education.create! valid_attributes
       expect do
-        delete :destroy, params: { id: curriculum.to_param }, session: valid_session
-      end.to change(Curriculum, :count).by(-1)
+        delete :destroy, params: { id: education.to_param }, session: valid_session
+      end.to change(Education, :count).by(-1)
     end
 
-    it 'redirects to the curriculums list' do
-      curriculum = Curriculum.create! valid_attributes
-      delete :destroy, params: { id: curriculum.to_param }, session: valid_session
-      expect(response).to redirect_to(curriculums_url)
+    it 'redirects to the educations list' do
+      education = Education.create! valid_attributes
+      delete :destroy, params: { id: education.to_param }, session: valid_session
+      expect(response).to redirect_to(educations_url)
     end
   end
 end
