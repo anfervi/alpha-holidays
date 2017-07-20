@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :department, presence: true
   validates :role, presence: true
   has_many :holidays
+  has_one :curriculum
   enum role: { admin: 0, manager: 1, employee: 2 }
 
   def full_name

@@ -3,10 +3,20 @@ class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: %i[show edit update destroy]
 
   def index
-    @curriculums = Curriculum.all
+    @q = Curriculum.ransack(params[:q])
+    @curriculums = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+    end
   end
 
-  def show; end
+  def show
+    @curriculum = Curriculum.find(params[:id])
+    authorize @curriculum
+    respond_to do |format|
+      format.html
+    end
+  end
 
   def new
     @curriculum = Curriculum.new
@@ -45,7 +55,7 @@ class CurriculumsController < ApplicationController
   private
 
   def set_curriculum
-    @curriculum = Curriculum.find(params[:id])
+    @curriculum = Curriculum.find(params[:curriculum_id]).first if params[:curriculum_id]
   end
 
   def curriculum_params
