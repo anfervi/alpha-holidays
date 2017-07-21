@@ -1,0 +1,11 @@
+= simple_form_for @curriculum, :url => edit_curriculum_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :adress, label:t('adress')
+    = f.input :postal_code, label:t('postal_code')
+    = f.input :city, label:t('city')
+    = f.input :phone, label:t('phone')
+    = f.input :birthdate, label:t('birthdate')
+    = f.input :nationality, label:t('nationality')
+    = f.input :user, label:t('user')
+    = f.button :submit

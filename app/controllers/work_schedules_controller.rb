@@ -20,10 +20,8 @@ class WorkSchedulesController < ApplicationController
     respond_to do |format|
       if @work_schedule.save
         format.html { redirect_to @work_schedule, notice: 'Work schedule was successfully created.' }
-        format.json { render :show, status: :created, location: @work_schedule }
       else
         format.html { render :new }
-        format.json { render json: @work_schedule.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,10 +30,8 @@ class WorkSchedulesController < ApplicationController
     respond_to do |format|
       if @work_schedule.update(work_schedule_params)
         format.html { redirect_to @work_schedule, notice: 'Work schedule was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work_schedule }
       else
         format.html { render :edit }
-        format.json { render json: @work_schedule.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,7 +40,6 @@ class WorkSchedulesController < ApplicationController
     @work_schedule.destroy
     respond_to do |format|
       format.html { redirect_to work_schedules_url, notice: 'Work schedule was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

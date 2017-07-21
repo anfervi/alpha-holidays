@@ -1,0 +1,28 @@
+.panel.panel-default.panel-condensed
+  .panel-heading.separator
+    i.fa.fa-list
+    .panel-title
+      =t('curriculums_list')
+  .panel-body
+    #section_all__done.table-responsive
+      table#condensedTable.table.table-hover
+        thead
+          tr
+            th.text-center
+              = sort_link q, :id, t('id')
+            th.text-center
+              = sort_link q, :name, t('name')
+            th.text-center
+              = sort_link q, :department, t('department')
+            th.text-center[style="width:25%;"]
+        tbody
+          - myStyle="padding-top:2px;padding-bottom:2px"
+          - curriculums.each do |curriculum|
+            tr
+              td.text-center
+                = curriculum.id
+              td.text-center
+                = curriculum.user.full_name
+              td.text-center
+                = curriculum.user.department
+

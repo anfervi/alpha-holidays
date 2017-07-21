@@ -1,0 +1,12 @@
+= simple_form_for @work_experience, :url => edit_work_experience_path, :method => :patch do |f|
+= f.error_notification
+.form-inputs
+  = f.input :start_date, label:t('start_date')
+  = f.input :end_date, label:t('end_date')
+  = f.input :position, label:t('position')
+  = f.input :company, label:t('company')
+  = f.input :city, label:t('city')
+  = f.input :activities, label:t('activities')
+  = f.input :technologies, label:t('technologies')
+  = f.input :curriculum, label:t('curriculum')
+  = f.button :submit

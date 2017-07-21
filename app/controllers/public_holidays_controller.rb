@@ -20,10 +20,8 @@ class PublicHolidaysController < ApplicationController
     respond_to do |format|
       if @public_holiday.save
         format.html { redirect_to @public_holiday, notice: 'Public holiday was successfully created.' }
-        format.json { render :show, status: :created, location: @public_holiday }
       else
         format.html { render :new }
-        format.json { render json: @public_holiday.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,10 +30,8 @@ class PublicHolidaysController < ApplicationController
     respond_to do |format|
       if @public_holiday.update(public_holiday_params)
         format.html { redirect_to @public_holiday, notice: 'Public holiday was successfully updated.' }
-        format.json { render :show, status: :ok, location: @public_holiday }
       else
         format.html { render :edit }
-        format.json { render json: @public_holiday.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,7 +40,6 @@ class PublicHolidaysController < ApplicationController
     @public_holiday.destroy
     respond_to do |format|
       format.html { redirect_to public_holidays_url, notice: 'Public holiday was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

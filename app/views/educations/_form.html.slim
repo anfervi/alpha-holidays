@@ -1,0 +1,12 @@
+= simple_form_for @education, :url => edit_education_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :type, label:t('type')
+    = f.input :start_date, label:t('start_date')
+    = f.input :end_date, label:t('end_date')
+    = f.input :title, label:t('title')
+    = f.input :center, label:t('center')
+    = f.input :city, label:t('city')
+    = f.input :duration, label:t('duration')
+    = f.input :curriculum, label:t('curriculum')
+    = f.button :submit

@@ -46,10 +46,8 @@ class HolidaysController < ApplicationController
     respond_to do |format|
       if @holiday.save
         format.html { redirect_to @holiday, notice: 'Holiday was successfully created.' }
-        format.json { render :show, status: :created, location: @holiday }
       else
         format.html { render :new }
-        format.json { render json: @holiday.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,10 +57,8 @@ class HolidaysController < ApplicationController
     respond_to do |format|
       if @holiday.update(holiday_params)
         format.html { redirect_to @holiday, notice: 'Holiday was successfully updated.' }
-        format.json { render :show, status: :ok, location: @holiday }
       else
         format.html { render :edit }
-        format.json { render json: @holiday.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,7 +68,6 @@ class HolidaysController < ApplicationController
     @holiday.destroy
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -83,7 +78,6 @@ class HolidaysController < ApplicationController
     @holiday.save
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully validated.' }
-      format.json { head :no_content }
     end
   end
 
@@ -94,7 +88,6 @@ class HolidaysController < ApplicationController
     @holiday.save
     respond_to do |format|
       format.html { redirect_to holidays_url, notice: 'Holiday was successfully rejected.' }
-      format.json { head :no_content }
     end
   end
 

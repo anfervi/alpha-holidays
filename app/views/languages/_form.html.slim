@@ -1,0 +1,9 @@
+= simple_form_for @language, :url => edit_language_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :language, label:t('language')
+    = f.input :speaking, label:t('speaking')
+    = f.input :writing, label:t('writing')
+    = f.input :reading, label:t('reading')
+    = f.input :curriculum, label:t('curriculum')
+    = f.button :submit
