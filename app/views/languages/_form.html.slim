@@ -1,24 +1,9 @@
-= form_for @language do |f|
-  - if @language.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@language.errors.count, "error")} prohibited this language from being saved:"
-      ul
-        - @language.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :language
-    = f.text_field :language
-  .field
-    = f.label :speaking
-    = f.number_field :speaking
-  .field
-    = f.label :writing
-    = f.number_field :writing
-  .field
-    = f.label :reading
-    = f.number_field :reading
-  .field
-    = f.label :curriculum
-    = f.text_field :curriculum
-  .actions = f.submit
+= simple_form_for @language, :url => edit_language_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :language, label:t('language')
+    = f.input :speaking, label:t('speaking')
+    = f.input :writing, label:t('writing')
+    = f.input :reading, label:t('reading')
+    = f.input :curriculum, label:t('curriculum')
+    = f.button :submit

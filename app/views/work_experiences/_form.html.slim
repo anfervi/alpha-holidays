@@ -1,33 +1,12 @@
-= form_for @work_experience do |f|
-  - if @work_experience.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@work_experience.errors.count, "error")} prohibited this work_experience from being saved:"
-      ul
-        - @work_experience.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :end_date
-    = f.date_select :end_date
-  .field
-    = f.label :position
-    = f.text_field :position
-  .field
-    = f.label :company
-    = f.text_field :company
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :activities
-    = f.text_area :activities
-  .field
-    = f.label :technologies
-    = f.text_area :technologies
-  .field
-    = f.label :curriculum
-    = f.text_field :curriculum
-  .actions = f.submit
+= simple_form_for @work_experience, :url => edit_work_experience_path, :method => :patch do |f|
+= f.error_notification
+.form-inputs
+  = f.input :start_date, label:t('start_date')
+  = f.input :end_date, label:t('end_date')
+  = f.input :position, label:t('position')
+  = f.input :company, label:t('company')
+  = f.input :city, label:t('city')
+  = f.input :activities, label:t('activities')
+  = f.input :technologies, label:t('technologies')
+  = f.input :curriculum, label:t('curriculum')
+  = f.button :submit

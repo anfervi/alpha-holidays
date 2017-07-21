@@ -1,33 +1,12 @@
-= form_for @education do |f|
-  - if @education.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@education.errors.count, "error")} prohibited this education from being saved:"
-      ul
-        - @education.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :type
-    = f.number_field :type
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :end_date
-    = f.date_select :end_date
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :center
-    = f.text_field :center
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :duration
-    = f.number_field :duration
-  .field
-    = f.label :curriculum
-    = f.text_field :curriculum
-  .actions = f.submit
+= simple_form_for @education, :url => edit_education_path, :method => :patch do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :type, label:t('type')
+    = f.input :start_date, label:t('start_date')
+    = f.input :end_date, label:t('end_date')
+    = f.input :title, label:t('title')
+    = f.input :center, label:t('center')
+    = f.input :city, label:t('city')
+    = f.input :duration, label:t('duration')
+    = f.input :curriculum, label:t('curriculum')
+    = f.button :submit

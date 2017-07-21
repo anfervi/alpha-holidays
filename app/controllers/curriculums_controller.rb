@@ -1,4 +1,4 @@
-#CurriculumsController
+# CurriculumsController
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: %i[show edit update destroy]
 
@@ -12,7 +12,6 @@ class CurriculumsController < ApplicationController
 
   def show
     @curriculum = Curriculum.find(params[:id])
-    authorize @curriculum
     respond_to do |format|
       format.html
     end
@@ -22,10 +21,13 @@ class CurriculumsController < ApplicationController
     @curriculum = Curriculum.new
   end
 
-  def edit; end
+  def edit
+    @curriculum = Curriculum.find(params[:id])
+  end
 
   def create
     @curriculum = Curriculum.new(curriculum_params)
+    @curriculum.save
     respond_to do |format|
       if @curriculum.save
         format.html { redirect_to @curriculum, notice: 'Curriculum was successfully created.' }

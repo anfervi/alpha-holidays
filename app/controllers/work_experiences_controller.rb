@@ -2,19 +2,31 @@ class WorkExperiencesController < ApplicationController
   before_action :set_work_experience, only: %i[show edit update destroy]
 
   def index
-    @work_experiences = WorkExperience.all
+    @q = WorkExperience.ransack(params[:q])
+    @work_experience = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+    end
   end
 
-  def show; end
+  def show
+    @work_experience = WorkExperience.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
 
   def new
     @work_experience = WorkExperience.new
   end
 
-  def edit; end
+  def edit
+    @work_experience = WorkExperience.find(params[:id])
+  end
 
   def create
     @work_experience = WorkExperience.new(work_experience_params)
+    @work_experience.save
     respond_to do |format|
       if @work_experience.save
         format.html { redirect_to @work_experience, notice: 'Work experience was successfully created.' }
@@ -44,7 +56,7 @@ class WorkExperiencesController < ApplicationController
   private
 
   def set_work_experience
-    @work_experience = WorkExperience.find(params[:id])
+    @work_experience = WorkExperience.find(params[:id]).first if params[:work_experience_id]
   end
 
   def work_experience_params

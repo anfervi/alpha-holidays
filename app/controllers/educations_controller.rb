@@ -4,18 +4,31 @@ class EducationsController < ApplicationController
 
   def index
     @educations = Education.all
+    @q = Education.ransack(params[:q])
+    @educations = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+    end
   end
 
-  def show; end
+  def show
+    @education = Education.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
 
   def new
     @education = Education.new
   end
 
-  def edit; end
+  def edit
+    @education = Education.find(params[:id])
+  end
 
   def create
     @education = Education.new(education_params)
+    @education.save
     respond_to do |format|
       if @education.save
         format.html { redirect_to @education, notice: 'Education was successfully created.' }
@@ -45,7 +58,7 @@ class EducationsController < ApplicationController
   private
 
   def set_education
-    @education = Education.find(params[:id])
+    @education = Education.find(params[:education_id]).first if params[:education_id]
   end
 
   def education_params

@@ -3,19 +3,31 @@ class LanguagesController < ApplicationController
   before_action :set_language, only: %i[show edit update destroy]
 
   def index
-    @languages = Language.all
+    @q = Language.ransack(params[:q])
+    @educations = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+    end
   end
 
-  def show; end
+  def show
+    @language = Language.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
 
   def new
     @language = Language.new
   end
 
-  def edit; end
+  def edit
+    @language = Language.find(params[:id])
+  end
 
   def create
     @language = Language.new(language_params)
+    @language.save
     respond_to do |format|
       if @language.save
         format.html { redirect_to @language, notice: 'Language was successfully created.' }
@@ -45,7 +57,7 @@ class LanguagesController < ApplicationController
   private
 
   def set_language
-    @language = Language.find(params[:id])
+    @language = Language.find(params[:language_id]).first if params[:language_id]
   end
 
   def language_params
