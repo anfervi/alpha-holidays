@@ -1,12 +1,7 @@
 class UserDecorator < Draper::Decorator
-  delegate_all
+  decorates :user
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def self.available_roles
+    User.roles.collect { |s| [s[0].titleize, s[0]] }
+  end
 end
