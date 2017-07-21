@@ -7,7 +7,7 @@
     = f.input :password, hint: false, error_html: { id: 'password_error'}
     = f.input :password_confirmation, label: false
     = f.input :department, label:t('department')
-    = f.input :role, collection: User.roles.collect { |s| [s[0].titleize, s[0]] }
+    = f.input :role, collection: UserDecorator.available_roles
     = f.input :avatar, as: :image_preview
   .form-actions
     = f.button :submit

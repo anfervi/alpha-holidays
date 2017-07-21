@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     @users = @q.result(distinct: true)
   end
 
-  def show() end
+  def show
+    @user = User.find(params[:id])
+  end
 
   def new
     @user = User.new
